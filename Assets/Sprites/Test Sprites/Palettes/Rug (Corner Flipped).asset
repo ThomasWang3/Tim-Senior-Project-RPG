@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Boss Cloud (Corner Rotated)
+  m_Name: Rug (Corner Flipped)
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 6501dd7a6b7dd7b4abff8b0002a09e52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8989f479432aa794686aa88e013c51b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
