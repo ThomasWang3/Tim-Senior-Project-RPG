@@ -7,6 +7,20 @@ public class Character : MonoBehaviour
 
     [SerializeField] private uint maxHealth;
     [SerializeField] private uint currHealth;
+    [SerializeField] private string charName;
+
+    public uint getMaxHealth()
+    {
+        return maxHealth;
+    }
+    public uint getCurrHealth()
+    {
+        return currHealth;
+    }
+    public string getName()
+    {
+        return charName;
+    }
 
     private void Start()
     {

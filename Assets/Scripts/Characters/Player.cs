@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] private string playerName = "Guy";
+
 }
