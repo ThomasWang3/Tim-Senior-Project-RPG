@@ -38,15 +38,25 @@ public class PlayerMovement : MonoBehaviour
         moveVector = movement.ReadValue<Vector2>();
         if (moveVector.x != 0 || moveVector.y != 0)
         {
-            // do stuff for animations?
-            animator.SetInteger("x", (int)moveVector.x);
-            animator.SetInteger("y", (int)moveVector.y);
-            spriteRenderer.flipX = moveVector.x > 0 ? true : false;
+            animator.SetFloat("x", 1.0f);
+            animator.SetFloat("y", moveVector.y);
+            animator.SetFloat("speed", 1.0f);
+        } 
+        else
+        {
+            animator.SetFloat("speed", 0.0f);
         }
+        if (moveVector.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if(moveVector.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        //Debug.Log("moveVector: " + moveVector);
         moveVector = moveVector.normalized * moveSpeed * moveMultiplier;
         rb.velocity = moveVector;
-        //transform.Translate(new Vector3(moveVector.x, moveVector.y, 0f), Space.World);
-        //Debug.Log("moveVector: " + moveVector);
     }
     public void OnEnable()
     {

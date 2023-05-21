@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-
-    [SerializeField] private uint maxHealth;
-    [SerializeField] private uint currHealth;
-    [SerializeField] private string charName;
+    [SerializeField] EntityData entityData;
+    [SerializeField] Sprite sprite;
+    //[SerializeField] private uint maxHealth;
+    //[SerializeField] private uint currHealth;
+    //[SerializeField] private string charName;
 
     public uint getMaxHealth()
     {
-        return maxHealth;
+        return entityData.maxHealth;
     }
     public uint getCurrHealth()
     {
-        return currHealth;
+        return entityData.currHealth;
     }
     public string getName()
     {
-        return charName;
+        return entityData.charName;
+    }
+
+    public Sprite getSprite()
+    {
+        return sprite;
     }
 
     private void Start()
     {
-        currHealth = maxHealth;
+        entityData.currHealth = entityData.maxHealth;
     }
 
     private void Attack(uint damage, Character enemy)
@@ -34,8 +40,8 @@ public class Character : MonoBehaviour
 
     private void TakeDamage(uint damageTaken)
     {
-        currHealth -= damageTaken;
-        if(currHealth == 0)
+        entityData.currHealth -= damageTaken;
+        if(entityData.currHealth == 0)
         {
 
         }

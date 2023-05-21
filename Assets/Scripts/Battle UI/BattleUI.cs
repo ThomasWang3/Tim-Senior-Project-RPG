@@ -23,10 +23,15 @@ public class BattleUI : MonoBehaviour
     protected Color fullHealthColor = Color.green;
     protected Color zeroHealthColor = Color.red;
 
+    // Entity variables
+    [Header("Entity variables")]
     [SerializeField] protected Character character;
+    [SerializeField] protected Image image;
 
     public void SetHealthUI()
     {
+        image.sprite = character.getSprite(); 
+
         // setting up name variable
         charName.text = character.getName();
 
