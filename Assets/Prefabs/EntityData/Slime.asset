@@ -15,3 +15,5 @@ MonoBehaviour:
   charName: Slime
   maxHealth: 5
   currHealth: 0
+  speed: 0
+  spriteScale: 0.3

@@ -10,6 +10,11 @@ public class Character : MonoBehaviour
     //[SerializeField] private uint currHealth;
     //[SerializeField] private string charName;
 
+    public EntityData getEntityData()
+    {
+        return entityData;
+    }
+
     public uint getMaxHealth()
     {
         return entityData.maxHealth;
@@ -26,6 +31,16 @@ public class Character : MonoBehaviour
     public Sprite getSprite()
     {
         return sprite;
+    }
+
+    public uint getSpeed()
+    {
+        return entityData.speed;
+    }
+
+    public float getSpriteScale()
+    {
+        return entityData.spriteScale;
     }
 
     private void Start()

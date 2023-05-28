@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Dragon King
   maxHealth: 100
-  currHealth: 0
+  currHealth: 100
+  turnCounter: 0
+  speed: 2
+  spriteScale: 1

@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     // Input
     private Input input;
     private InputAction movement;
+    //private bool lockMovement = false;
 
     // Animation
     [SerializeField] Animator animator;
@@ -27,6 +28,16 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    //public void LockMovement()
+    //{
+    //    lockMovement = true;
+    //}
+
+    //public void UnlockMovement()
+    //{
+    //    lockMovement = false;
+    //}
+
     // Update is called once per frame
     void Update()
     {
@@ -35,7 +46,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        moveVector = movement.ReadValue<Vector2>();
+        //if (lockMovement)
+        //{
+        //    moveVector = new Vector2(0f, 0f);
+        //} 
+        //else
+        //{
+            moveVector = movement.ReadValue<Vector2>();
+        //}
+
         if (moveVector.x != 0 || moveVector.y != 0)
         {
             animator.SetFloat("x", 1.0f);
