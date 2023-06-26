@@ -523,7 +523,7 @@ RectTransform:
   m_Children:
   - {fileID: 4123485368846993593}
   - {fileID: 4460781588266315839}
-  m_Father: {fileID: 5159992074315890982}
+  m_Father: {fileID: 389829120484442969}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -750,7 +750,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5159992074315890982}
+  - component: {fileID: 389829120484442969}
   - component: {fileID: 5159992074315890981}
   - component: {fileID: 4460781587067749995}
   m_Layer: 0
@@ -760,15 +760,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5159992074315890982
-Transform:
+--- !u!224 &389829120484442969
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5159992074315890980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.5, y: 32.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -776,6 +776,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -100, y: 0}
+  m_SizeDelta: {x: 200, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5159992074315890981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,8 +795,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: {fileID: 4123485370879228403}
   charHP: {fileID: 4123485368887949481}
-  maxHealth: 0
-  currHealth: 0
   healthSlider: {fileID: 4123485369299811339}
   fillImage: {fileID: 4123485370269157692}
   character: {fileID: 4460781587067749995}
@@ -808,5 +811,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595ab870377628c4db0e5b13f712921b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityData: {fileID: 11400000, guid: ac4cb5f228828d84985bdbab8dc24a48, type: 2}
+  charName: 
+  maxHealth: 0
+  currHealth: 0
+  turnCounter: 0
+  speed: 0
   sprite: {fileID: 21300000, guid: ec52a51f2d1ca7a4d8c587b8533dc430, type: 3}
+  spriteScale: 0

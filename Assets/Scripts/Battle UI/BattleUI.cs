@@ -6,15 +6,16 @@ using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
+
     // Text variables
     [Header("Text variables")]
     [SerializeField] protected TextMeshProUGUI charName;
     [SerializeField] protected TextMeshProUGUI charHP;
 
-    // Health variables
-    [Header("Health variables")]
-    [SerializeField] protected uint maxHealth;
-    [SerializeField] protected uint currHealth;
+    //// Health variables
+    //[Header("Health variables")]
+    //[SerializeField] protected uint maxHealth;
+    //[SerializeField] protected uint currHealth;
 
     // Slider variables
     [Header("Slider variables")]
@@ -39,18 +40,18 @@ public class BattleUI : MonoBehaviour
         // setting up name variable
         charName.text = character.getName();
 
-        // setting up health
-        maxHealth = character.getMaxHealth();
-        currHealth = character.getCurrHealth();
+        //// setting up health
+        //maxHealth = character.getMaxHealth();
+        //currHealth = character.getCurrHealth();
 
         // setting up slider
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currHealth;
+        healthSlider.maxValue = character.getMaxHealth();
+        healthSlider.value = character.getCurrHealth();
         healthSlider.minValue = 0;
 
         // setting up hp text
-        charHP.text = currHealth + "/" + maxHealth;
-        float scale = (float) currHealth / (float) maxHealth;
+        charHP.text = character.getCurrHealth() + "/" + character.getMaxHealth();
+        float scale = (float)character.getCurrHealth() / (float) character.getMaxHealth();
         if(scale <= 0.3f)
         {
             fillImage.color = Color.red;
@@ -63,7 +64,7 @@ public class BattleUI : MonoBehaviour
         {
             fillImage.color = Color.green;
         }
-        if(currHealth == 0)
+        if(character.getCurrHealth() == 0)
         {
             fillImage.gameObject.SetActive(false);
         }
@@ -71,11 +72,15 @@ public class BattleUI : MonoBehaviour
 
     private void Start()
     {
+        if(character == null)
+        {
+            character = GetComponent<Enemy>();
+        }
         SetHealthUI();
     }
     private void Update()
     {
-        if (currHealth != character.getCurrHealth())
+        if (healthSlider.value != character.getCurrHealth())
         {
             SetHealthUI();
         }
