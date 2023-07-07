@@ -15,7 +15,7 @@ public class EnemyUIManager : MonoBehaviour
     //[SerializeField] private RectTransform rt;
     [SerializeField] private float width = 600;
     [SerializeField] private float numEnemies;
-    [SerializeField] private float offset = -400;
+    private float offset = 200;
 
     //[SerializeField] private Camera cam;
 
@@ -33,13 +33,13 @@ public class EnemyUIManager : MonoBehaviour
 
         numEnemies = entityDataList.getEntities().Count;
         //Debug.Log("transform.position: " + transform.position);
-        spawnPosition = GetComponent<RectTransform>().anchoredPosition;
+        //spawnPosition = GetComponent<RectTransform>().anchoredPosition;
+
         //transform.position;
+        spawnPosition.x = (4 - numEnemies) * 100;
         spawnPosition.y = 0;
-        offset += width / (numEnemies + 1);
         foreach (EntityData ed in entityDataList.getEntities())
         {
-            spawnPosition.x += offset;
             //GameObject 
             enemyUI = Instantiate(enemyUIPrefab, Vector3.zero, Quaternion.identity, transform);
             enemyUI.GetComponent<Enemy>().SetupCharacter(ed);
@@ -47,8 +47,7 @@ public class EnemyUIManager : MonoBehaviour
             enemyUI.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
 
             enemyList.Add(enemyUI.GetComponent<Enemy>());
-
-
+            spawnPosition.x += offset;
         }
         //Debug.Log(rt.rect);
         //width = (rt.anchorMax.x - rt.anchorMin.x) * Screen.width;
