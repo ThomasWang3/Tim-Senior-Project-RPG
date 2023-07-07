@@ -699,11 +699,11 @@ RectTransform:
   m_Father: {fileID: 4123485370877011249}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000019073, y: -49.99999}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4460781588266315837
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -751,7 +751,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 389829120484442969}
-  - component: {fileID: 5159992074315890981}
+  - component: {fileID: 6355066640992646126}
+  - component: {fileID: 8611067009332617737}
   m_Layer: 0
   m_Name: Enemy (Battle)
   m_TagString: Untagged
@@ -780,7 +781,7 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 200, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5159992074315890981
+--- !u!114 &6355066640992646126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -789,12 +790,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 5159992074315890980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4285fcd7ff697f4096c0fe8e753f95c, type: 3}
+  m_Script: {fileID: 11500000, guid: aaba0fd6226696748bc4e04370a23e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charName: {fileID: 4123485370879228403}
   charHP: {fileID: 4123485368887949481}
   healthSlider: {fileID: 4123485369299811339}
   fillImage: {fileID: 4123485370269157692}
-  character: {fileID: 0}
+  character: {fileID: 8611067009332617737}
   image: {fileID: 4460781588266315836}
+--- !u!114 &8611067009332617737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5159992074315890980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3382918a02a7c4144aca63a5c3d860f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charName: 
+  maxHealth: 0
+  currHealth: 0
+  turnCounter: 0
+  speed: 0
+  sprite: {fileID: 0}
+  spriteScale: 0

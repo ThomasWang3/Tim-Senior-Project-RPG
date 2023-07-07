@@ -29,8 +29,11 @@ public class BattleUI : MonoBehaviour
     [SerializeField] protected Character character;
     [SerializeField] protected Image image;
 
-    public void SetHealthUI()
+
+    protected void SetHealthUI()
     {
+
+
         image.sprite = character.getSprite();
         image.preserveAspect = true;
         image.rectTransform.localScale = new Vector3(character.getSpriteScale(), character.getSpriteScale());
@@ -51,33 +54,25 @@ public class BattleUI : MonoBehaviour
 
         // setting up hp text
         charHP.text = character.getCurrHealth() + "/" + character.getMaxHealth();
-        float scale = (float)character.getCurrHealth() / (float) character.getMaxHealth();
-        if(scale <= 0.3f)
+        float scale = (float)character.getCurrHealth() / (float)character.getMaxHealth();
+        if (scale <= 0.3f)
         {
             fillImage.color = Color.red;
-        } 
-        else if (scale <= 0.7f)
+        } else if (scale <= 0.7f)
         {
             fillImage.color = Color.yellow;
-        } 
-        else
+        } else
         {
             fillImage.color = Color.green;
         }
-        if(character.getCurrHealth() == 0)
+        if (character.getCurrHealth() == 0)
         {
             fillImage.gameObject.SetActive(false);
         }
     }
 
-    private void Start()
-    {
-        if(character == null)
-        {
-            character = GetComponent<Enemy>();
-        }
-        SetHealthUI();
-    }
+
+
     private void Update()
     {
         if (healthSlider.value != character.getCurrHealth())

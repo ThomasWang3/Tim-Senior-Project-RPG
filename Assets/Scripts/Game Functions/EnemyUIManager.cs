@@ -32,7 +32,7 @@ public class EnemyUIManager : MonoBehaviour
         entityDataList = FindObjectOfType<InitiateBattle>();
 
         numEnemies = entityDataList.getEntities().Count;
-        Debug.Log("transform.position: " + transform.position);
+        //Debug.Log("transform.position: " + transform.position);
         spawnPosition = GetComponent<RectTransform>().anchoredPosition;
         //transform.position;
         spawnPosition.y = 0;
@@ -42,10 +42,9 @@ public class EnemyUIManager : MonoBehaviour
             spawnPosition.x += offset;
             //GameObject 
             enemyUI = Instantiate(enemyUIPrefab, Vector3.zero, Quaternion.identity, transform);
-            enemyUI.AddComponent<Enemy>().SetupCharacter(ed);
+            enemyUI.GetComponent<Enemy>().SetupCharacter(ed);
             
             enemyUI.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
-            //enemyUI.GetComponent<RectTransform>().
 
             enemyList.Add(enemyUI.GetComponent<Enemy>());
 
@@ -70,6 +69,6 @@ public class EnemyUIManager : MonoBehaviour
     {
         //enemyUI.GetComponent<RectTransform>().position = new Vector3(offset, 0f, 0f);
         //enemyUI.transform.position = spawnPosition;
-        Debug.Log("spawnPosition: " + spawnPosition);
+        //Debug.Log("spawnPosition: " + spawnPosition);
     }
 }

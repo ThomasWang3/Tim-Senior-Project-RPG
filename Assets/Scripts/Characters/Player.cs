@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [SerializeField] EntityData playerData;
 
+    private void Start()
+    {
+        SetupCharacter(playerData);
+    }
 }
