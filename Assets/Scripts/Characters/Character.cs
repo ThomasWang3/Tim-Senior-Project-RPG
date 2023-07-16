@@ -6,13 +6,12 @@ public class Character : MonoBehaviour
 {
     //[SerializeField] EntityData entityData;
 
-    [SerializeField] public string charName;
-    [SerializeField] public uint maxHealth;
-    [SerializeField] public uint currHealth;
-    [SerializeField] public int turnCounter;
-    [SerializeField] public uint speed;
-    [SerializeField] public Sprite sprite;
-    [SerializeField] public float spriteScale;
+    [SerializeField] protected string charName;
+    [SerializeField] protected uint maxHealth;
+    [SerializeField] protected uint currHealth;
+    [SerializeField] protected uint attack;
+    [SerializeField] protected Sprite sprite;
+    [SerializeField] protected float spriteScale;
 
     public uint getMaxHealth()
     {
@@ -30,10 +29,6 @@ public class Character : MonoBehaviour
     {
         return sprite;
     }
-    public uint getSpeed()
-    {
-        return speed;
-    }
     public float getSpriteScale()
     {
         return spriteScale;
@@ -44,8 +39,6 @@ public class Character : MonoBehaviour
         charName = ed.charName;
         maxHealth = ed.maxHealth;
         currHealth = maxHealth;
-        turnCounter = ed.turnCounter;
-        speed = ed.speed;
         sprite = ed.sprite;
         spriteScale = ed.spriteScale;
     }

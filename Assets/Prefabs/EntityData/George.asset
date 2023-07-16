@@ -15,6 +15,6 @@ MonoBehaviour:
   charName: George
   maxHealth: 20
   turnCounter: 0
-  speed: 5
+  attack: 5
   sprite: {fileID: 21300000, guid: ec52a51f2d1ca7a4d8c587b8533dc430, type: 3}
   spriteScale: 1
