@@ -18,4 +18,3 @@ MonoBehaviour:
   attack: 2
   sprite: {fileID: 21300000, guid: c203ebcead99dd3468fde8767c5b3b5d, type: 3}
   spriteScale: 0.3
-  attack: 1
