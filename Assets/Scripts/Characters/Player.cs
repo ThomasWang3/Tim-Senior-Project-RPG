@@ -10,4 +10,14 @@ public class Player : Character
     {
         SetupCharacter(playerData);
     }
+
+    public void Heal(int healthRestored)
+    {
+        this.currHealth += healthRestored;
+        //prevent overhealing
+        if(this.currHealth > maxHealth)
+        {
+            this.currHealth = maxHealth;
+        }
+    }
 }

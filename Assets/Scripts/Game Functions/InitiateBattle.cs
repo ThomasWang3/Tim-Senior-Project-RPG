@@ -28,7 +28,5 @@ public class InitiateBattle : MonoBehaviour
         //player.LockMovement();
         Time.timeScale = 0;
         SceneManager.LoadSceneAsync("Battle Template", LoadSceneMode.Additive);
-        
     }
-
 }

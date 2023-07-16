@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(100)]
 public class EnemyUIManager : MonoBehaviour
 {
     [Header("Enemy EntityData List")]
@@ -27,8 +28,9 @@ public class EnemyUIManager : MonoBehaviour
         return enemyList;
     }
 
-    private void Start()
+    void Awake()
     {
+        Debug.Log("EnemyUI Manager Started here");
         entityDataList = FindObjectOfType<InitiateBattle>();
 
         numEnemies = entityDataList.getEntities().Count;
@@ -51,6 +53,10 @@ public class EnemyUIManager : MonoBehaviour
         }
         //Debug.Log(rt.rect);
         //width = (rt.anchorMax.x - rt.anchorMin.x) * Screen.width;
+    }
+
+    private void Start()
+    {
     }
 
     // Update is called once per frame

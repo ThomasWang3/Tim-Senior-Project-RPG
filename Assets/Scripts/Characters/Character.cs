@@ -6,18 +6,21 @@ public class Character : MonoBehaviour
 {
     //[SerializeField] EntityData entityData;
 
-    [SerializeField] protected string charName;
-    [SerializeField] protected uint maxHealth;
-    [SerializeField] protected uint currHealth;
-    [SerializeField] protected uint attack;
-    [SerializeField] protected Sprite sprite;
-    [SerializeField] protected float spriteScale;
+    [SerializeField] public string charName;
+    [SerializeField] public int maxHealth;
+    [SerializeField] public int currHealth;
+    [SerializeField] public int turnCounter;
+    [SerializeField] public uint speed;
+    [SerializeField] public Sprite sprite;
+    [SerializeField] public float spriteScale;
+    [SerializeField] public int attack;
+    [SerializeField] public bool isDead = false;
 
-    public uint getMaxHealth()
+    public int getMaxHealth()
     {
         return maxHealth;
     }
-    public uint getCurrHealth()
+    public int getCurrHealth()
     {
         return currHealth;
     }
@@ -33,6 +36,12 @@ public class Character : MonoBehaviour
     {
         return spriteScale;
     }
+    public int getAttack(){
+        return attack;
+    }
+    public bool IsDead(){
+        return isDead;
+    }
 
     public void SetupCharacter(EntityData ed)
     {
@@ -41,22 +50,26 @@ public class Character : MonoBehaviour
         currHealth = maxHealth;
         sprite = ed.sprite;
         spriteScale = ed.spriteScale;
+        attack = ed.attack;
     }
     private void Start()
     {
 
     }
 
-    private void Attack(uint damage, Character enemy)
+    public void Attack(int damage, Character enemy)
     {
         enemy.TakeDamage(damage);
     }
 
-    private void TakeDamage(uint damageTaken)
+    public void TakeDamage(int damageTaken)
     {
         currHealth -= damageTaken;
-        if(currHealth == 0)
+        Debug.Log("CURRENT HEALTH IS: " + this.currHealth);
+        if(currHealth <= 0)
         {
+            Debug.Log(this.getName() + " has died");
+            currHealth = 0;
             Die();
         }
     }
@@ -64,5 +77,6 @@ public class Character : MonoBehaviour
     private void Die()
     {
         Debug.Log(charName + " defeated.");
+        isDead = true;
     }
 }

@@ -158,6 +158,8 @@ MonoBehaviour:
   battleTurn: 0
   speedCounter: 20
   enemyManager: {fileID: 319102558}
+  playerMenu: {fileID: 2088421183}
+  placeHolder: 10
 --- !u!4 &76577142
 Transform:
   m_ObjectHideFlags: 0
@@ -421,7 +423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.00021362305, y: 25}
+  m_AnchoredPosition: {x: -0.00024414062, y: 25}
   m_SizeDelta: {x: 600, y: -50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &319102558
@@ -443,7 +445,6 @@ MonoBehaviour:
   spawnPosition: {x: 0, y: 0, z: 0}
   width: 600
   numEnemies: 0
-  offset: 0
   enemy: {fileID: 0}
 --- !u!1001 &355870748
 PrefabInstance:
@@ -770,7 +771,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684027339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 76577141}
+        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
+        m_MethodName: onHealSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &684027339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 789667063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 76577141}
+        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
+        m_MethodName: onRunSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &789667063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,7 +1318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1060825659}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 76577141}
+        m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
+        m_MethodName: onAttackSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1060825659
 MonoBehaviour:
   m_ObjectHideFlags: 0

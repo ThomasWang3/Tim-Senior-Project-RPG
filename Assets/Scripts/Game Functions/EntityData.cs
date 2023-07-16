@@ -6,9 +6,10 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
     [SerializeField] public string charName;
-    [SerializeField] public uint maxHealth;
+    [SerializeField] public int maxHealth;
     [SerializeField] public int turnCounter;
     [SerializeField] public uint attack;
     [SerializeField] public Sprite sprite;
     [SerializeField] public float spriteScale;
+    [SerializeField] public int attack;
 }
