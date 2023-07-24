@@ -156,7 +156,6 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   battleTurn: 0
-  speedCounter: 20
   enemyManager: {fileID: 319102558}
   playerMenu: {fileID: 2088421183}
   placeHolder: 10
@@ -443,7 +442,6 @@ MonoBehaviour:
   enemyUIPrefab: {fileID: 5159992074315890980, guid: 79c36f1ef5c4e874e961fc61f5d5b474, type: 3}
   enemyUI: {fileID: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
-  width: 600
   numEnemies: 0
   enemy: {fileID: 0}
 --- !u!1001 &355870748
@@ -1481,7 +1479,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.11764707, g: 0.11764707, b: 0.11764707, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1675,6 +1673,7 @@ GameObject:
   - component: {fileID: 1957551593}
   - component: {fileID: 1957551595}
   - component: {fileID: 1957551594}
+  - component: {fileID: 1957551596}
   m_Layer: 5
   m_Name: Bkgd
   m_TagString: Untagged
@@ -1740,6 +1739,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957551592}
   m_CullTransparentMesh: 1
+--- !u!114 &1957551596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957551592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea16245b15ffdc145b3820bd867d7831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityDataList: {fileID: 0}
+  image: {fileID: 1957551594}
 --- !u!1 &2088421183
 GameObject:
   m_ObjectHideFlags: 0

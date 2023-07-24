@@ -540,7 +540,7 @@ Transform:
   - {fileID: 1367316022}
   - {fileID: 264059883}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &146450367
 GameObject:
@@ -577,7 +577,7 @@ Transform:
   - {fileID: 348937181}
   - {fileID: 638914718}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161809873
 GameObject:
@@ -6022,7 +6022,7 @@ Transform:
   - {fileID: 1165352034}
   - {fileID: 2146660121}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1165352032
 GameObject:
@@ -6188,6 +6188,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: bebc68d3f1298244bb46cb29b2ddfb99, type: 3}
 --- !u!61 &1226260215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6300,7 +6301,7 @@ Transform:
   - {fileID: 1460117918}
   - {fileID: 2132969161}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1261453069
 GameObject:
@@ -10925,6 +10926,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: bebc68d3f1298244bb46cb29b2ddfb99, type: 3}
 --- !u!61 &1361937922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11558,6 +11560,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 486bb63239240d84fae3f144f25986c6, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: bebc68d3f1298244bb46cb29b2ddfb99, type: 3}
 --- !u!61 &1460117920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12680,13 +12683,13 @@ Transform:
   m_Children:
   - {fileID: 1468672634}
   - {fileID: 1021248396}
+  - {fileID: 1258014085}
   - {fileID: 1817583693}
   - {fileID: 1134386066}
   - {fileID: 146450368}
   - {fileID: 2052260157}
   - {fileID: 1968425779}
   - {fileID: 131179328}
-  - {fileID: 1258014085}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13402,7 +13405,7 @@ Transform:
   - {fileID: 1760074315}
   - {fileID: 599622379}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1829657371
 GameObject:
@@ -13814,7 +13817,7 @@ Transform:
   - {fileID: 100057519}
   - {fileID: 1480965202}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009657569
 GameObject:
@@ -14019,7 +14022,7 @@ Transform:
   - {fileID: 2079116037}
   - {fileID: 1014042847}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2079116035
 GameObject:
@@ -14292,6 +14295,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: abf4886ded1a875419b16a8e5a8f3701, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
+  backgroundSprite: {fileID: 0}
 --- !u!58 &2132969163
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14472,6 +14476,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: bebc68d3f1298244bb46cb29b2ddfb99, type: 3}
 --- !u!61 &2145226681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14678,11 +14683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3905945361622497238, guid: 000ef27bb47998247a91e739a3797681, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8589237
+      value: -78.3
       objectReference: {fileID: 0}
     - target: {fileID: 3905945361622497238, guid: 000ef27bb47998247a91e739a3797681, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.795627
+      value: 29.8
       objectReference: {fileID: 0}
     - target: {fileID: 3905945361622497238, guid: 000ef27bb47998247a91e739a3797681, type: 3}
       propertyPath: m_LocalPosition.z

@@ -502,7 +502,7 @@ Transform:
   - {fileID: 1210303209}
   - {fileID: 235437870}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &100944679
 GameObject:
@@ -830,7 +830,7 @@ Transform:
   - {fileID: 1011450277}
   - {fileID: 947561577}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &134169636
 GameObject:
@@ -1377,6 +1377,8 @@ GameObject:
   m_Component:
   - component: {fileID: 166542264}
   - component: {fileID: 166542263}
+  - component: {fileID: 166542266}
+  - component: {fileID: 166542265}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Untagged
@@ -1451,6 +1453,52 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &166542265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166542262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 166542266}
+  entities:
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
+  - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &166542266
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166542262}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0430035, y: -1.3760235}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5595437, y: 2.1271486}
+  m_EdgeRadius: 0
 --- !u!1 &208907056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +2002,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 131179328}
   m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &349920361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349920362}
+  m_Layer: 0
+  m_Name: Player Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349920362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349920361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.97, y: -17.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1701699298}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &363478876
 GameObject:
@@ -2580,6 +2659,8 @@ GameObject:
   m_Component:
   - component: {fileID: 421159650}
   - component: {fileID: 421159649}
+  - component: {fileID: 421159652}
+  - component: {fileID: 421159651}
   m_Layer: 0
   m_Name: Ghoul (2)
   m_TagString: Untagged
@@ -2654,6 +2735,51 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &421159651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421159648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 421159652}
+  entities:
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &421159652
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421159648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.019812167, y: -1.7170434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4613768, y: 1.6859131}
+  m_EdgeRadius: 0
 --- !u!1 &426369541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,7 +2997,7 @@ Transform:
   - {fileID: 1964622338}
   - {fileID: 1637255901}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &594171690
 GameObject:
@@ -2967,6 +3093,8 @@ GameObject:
   m_Component:
   - component: {fileID: 629723399}
   - component: {fileID: 629723398}
+  - component: {fileID: 629723401}
+  - component: {fileID: 629723400}
   m_Layer: 0
   m_Name: Ghoul (3)
   m_TagString: Untagged
@@ -3041,6 +3169,52 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629723400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629723397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 629723401}
+  entities:
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 221b2a4276d9d104493e2872b9995fbe, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &629723401
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629723397}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011074692, y: -1.6225971}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4428537, y: 1.8748057}
+  m_EdgeRadius: 0
 --- !u!1 &640548884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,7 +4145,7 @@ Transform:
   - {fileID: 786325277}
   - {fileID: 1741033867}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933943296
 GameObject:
@@ -4151,6 +4325,8 @@ GameObject:
   m_Component:
   - component: {fileID: 955082466}
   - component: {fileID: 955082465}
+  - component: {fileID: 955082468}
+  - component: {fileID: 955082467}
   m_Layer: 0
   m_Name: Ghoul (1)
   m_TagString: Untagged
@@ -4225,6 +4401,52 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955082467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955082464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 955082468}
+  entities:
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &955082468
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955082464}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.029442191, y: -1.6585984}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4494925, y: 1.802803}
+  m_EdgeRadius: 0
 --- !u!1 &975817541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4571,6 +4793,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1000403407}
   - component: {fileID: 1000403406}
+  - component: {fileID: 1000403409}
+  - component: {fileID: 1000403408}
   m_Layer: 0
   m_Name: Ghoul Boss
   m_TagString: Untagged
@@ -4645,6 +4869,50 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1000403408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000403405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 1000403409}
+  entities:
+  - {fileID: 11400000, guid: 1284821493a36b54f98dce37f518e934, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &1000403409
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000403405}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.035876393, y: -1.5964731}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1781833, y: 1.9270537}
+  m_EdgeRadius: 0
 --- !u!1 &1011450275
 GameObject:
   m_ObjectHideFlags: 0
@@ -18983,7 +19251,7 @@ Transform:
   - {fileID: 853124954}
   - {fileID: 1209729975}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390390635
 GameObject:
@@ -19696,7 +19964,7 @@ Transform:
   - {fileID: 244860774}
   - {fileID: 1121827698}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1546866911
 GameObject:
@@ -19818,7 +20086,7 @@ Transform:
   - {fileID: 1868157412}
   - {fileID: 1000403407}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637255899
 GameObject:
@@ -19987,7 +20255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1639615966
 EdgeCollider2D:
@@ -20384,8 +20652,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1817583693}
+  - {fileID: 349920362}
   - {fileID: 1021248396}
+  - {fileID: 1602929409}
+  - {fileID: 1817583693}
   - {fileID: 131179328}
   - {fileID: 549015890}
   - {fileID: 2029649747}
@@ -20394,7 +20664,6 @@ Transform:
   - {fileID: 1639615965}
   - {fileID: 909814530}
   - {fileID: 95354296}
-  - {fileID: 1602929409}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21552,7 +21821,7 @@ Transform:
   - {fileID: 1760074315}
   - {fileID: 1370880039}
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1844971622
 GameObject:
@@ -21900,6 +22169,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1868157412}
   - component: {fileID: 1868157411}
+  - component: {fileID: 1868157414}
+  - component: {fileID: 1868157413}
   m_Layer: 0
   m_Name: Ghoul (5)
   m_TagString: Untagged
@@ -21974,6 +22245,52 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868157413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868157410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 1868157414}
+  entities:
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 221b2a4276d9d104493e2872b9995fbe, type: 2}
+  - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &1868157414
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868157410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011075795, y: -1.8994899}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.465005, y: 1.3210201}
+  m_EdgeRadius: 0
 --- !u!1 &1868852658
 GameObject:
   m_ObjectHideFlags: 0
@@ -22246,8 +22563,6 @@ MonoBehaviour:
   charName: 
   maxHealth: 0
   currHealth: 0
-  turnCounter: 0
-  speed: 0
   sprite: {fileID: 0}
   spriteScale: 0
   attack: 0
@@ -22582,6 +22897,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1994980146}
   - component: {fileID: 1994980145}
+  - component: {fileID: 1994980148}
+  - component: {fileID: 1994980147}
   m_Layer: 0
   m_Name: Ghoul (4)
   m_TagString: Untagged
@@ -22656,6 +22973,52 @@ Transform:
   m_Father: {fileID: 1602929409}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1994980147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994980144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5557fe9aa2257fb46bd7b5f70011871e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 1994980148}
+  entities:
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  - {fileID: 11400000, guid: 5525ae1231fb7684e8d1a738778dbe93, type: 2}
+  player: {fileID: 0}
+  battleInitiated: 0
+  backgroundSprite: {fileID: 21300000, guid: 0a78693856189af4e9cf5548682c03a3, type: 3}
+--- !u!61 &1994980148
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994980144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.025800794, y: -1.7544286}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5939434, y: 1.6111426}
+  m_EdgeRadius: 0
 --- !u!1 &2021499545
 GameObject:
   m_ObjectHideFlags: 0
@@ -22822,7 +23185,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1701699298}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2044516360
 GameObject:

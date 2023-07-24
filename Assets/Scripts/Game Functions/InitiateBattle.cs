@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class InitiateBattle : MonoBehaviour
 {
+    [Header("Enemy Information")]
     [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private List<EntityData> entities;
     [SerializeField] private PlayerMovement player;
-    [SerializeField] public bool battleInitiated;
 
+    [Header("for EnemyUIManager use")]
+    public bool battleInitiated;
+
+    [Header("Battle Background Image")]
+    [SerializeField] public Sprite backgroundSprite;
+    
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();

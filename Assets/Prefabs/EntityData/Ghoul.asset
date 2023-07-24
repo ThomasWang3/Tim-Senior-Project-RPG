@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ea2b3996ed50c449182454a2ec9900, type: 3}
   m_Name: Ghoul
   m_EditorClassIdentifier: 
-  charName: 
-  maxHealth: 0
-  sprite: {fileID: 0}
-  spriteScale: 0
-  attack: 0
+  charName: Ghoul
+  maxHealth: 20
+  sprite: {fileID: 21300000, guid: 81880936645fa4543a1ba130f95c63bc, type: 3}
+  spriteScale: 1
+  attack: 10

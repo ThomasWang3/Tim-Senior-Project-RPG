@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyUIManager : MonoBehaviour
 {
     [Header("Enemy EntityData List")]
-    [SerializeField] private InitiateBattle entityDataList;
+    [SerializeField] public InitiateBattle entityDataList;
     [SerializeField] private List<Enemy> enemyList;
 
     [Header("UI Variables")]
