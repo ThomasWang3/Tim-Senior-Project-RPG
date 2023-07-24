@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveMultiplier = 0.01f;
     private Vector2 moveVector;
     private Vector2 turnVector;
-    [SerializeField] private bool groundDetected;
+    //[SerializeField] private bool groundDetected;
     [SerializeField] private LayerMask groundLayer;
     //private RaycastHit hit;
     private RaycastHit2D hit;
@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 //   + new Vector3(turnVector.normalized.x, turnVector.normalized.y, -0.5f)
                 new Vector3(0f, 0f, 1.0f), Color.red, 0.5f);
             moveSpeed = 0;
-            groundDetected = false;
+            //groundDetected = false;
         } else
         {
             Debug.DrawRay(origin,
@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
                  //+ new Vector3(turnVector.normalized.x, turnVector.normalized.y, -0.5f)
                  new Vector3(0f, 0f, 1.0f), Color.green, 0.5f);
             moveSpeed = tempSpeed;
-            groundDetected = true;
+            //groundDetected = true;
         }
         //}
     }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ea2b3996ed50c449182454a2ec9900, type: 3}
-  m_Name: Slime
+  m_Name: Slime Boss
   m_EditorClassIdentifier: 
-  charName: Slime
-  maxHealth: 5
+  charName: Slime Boss
+  maxHealth: 20
   sprite: {fileID: 21300000, guid: 9c63e3d40c3279b45884ee7ad3ca2839, type: 3}
-  spriteScale: 0.6
-  attack: 2
+  spriteScale: 2
+  attack: 6

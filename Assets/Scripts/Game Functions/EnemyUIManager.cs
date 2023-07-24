@@ -14,7 +14,7 @@ public class EnemyUIManager : MonoBehaviour
     [SerializeField] private GameObject enemyUI;
     [SerializeField] Vector3 spawnPosition;
     //[SerializeField] private RectTransform rt;
-    [SerializeField] private float width = 600;
+    //[SerializeField] private float width = 600;
     [SerializeField] private float numEnemies;
     private float offset = 200;
 
@@ -31,7 +31,15 @@ public class EnemyUIManager : MonoBehaviour
     void Awake()
     {
         Debug.Log("EnemyUI Manager Started here");
-        entityDataList = FindObjectOfType<InitiateBattle>();
+        InitiateBattle[] enemies = FindObjectsOfType<InitiateBattle>();
+        foreach(InitiateBattle enemy in enemies)
+        {
+            if (enemy.battleInitiated)
+            {
+                entityDataList = enemy;
+            }
+        }
+        entityDataList.battleInitiated = false;
 
         numEnemies = entityDataList.getEntities().Count;
         //Debug.Log("transform.position: " + transform.position);
@@ -45,7 +53,7 @@ public class EnemyUIManager : MonoBehaviour
             //GameObject 
             enemyUI = Instantiate(enemyUIPrefab, Vector3.zero, Quaternion.identity, transform);
             enemyUI.GetComponent<Enemy>().SetupCharacter(ed);
-            
+
             enemyUI.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
 
             enemyList.Add(enemyUI.GetComponent<Enemy>());
@@ -60,10 +68,10 @@ public class EnemyUIManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void CreateEnemyUI()
-    {
+    //public void CreateEnemyUI()
+    //{
         
-    }
+    //}
 
     public void UpdateEnemy(Enemy e)
     {

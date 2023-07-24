@@ -9,8 +9,8 @@ public class Character : MonoBehaviour
     [SerializeField] public string charName;
     [SerializeField] public int maxHealth;
     [SerializeField] public int currHealth;
-    [SerializeField] public int turnCounter;
-    [SerializeField] public uint speed;
+    //[SerializeField] public int turnCounter;
+    //[SerializeField] public uint speed;
     [SerializeField] public Sprite sprite;
     [SerializeField] public float spriteScale;
     [SerializeField] public int attack;

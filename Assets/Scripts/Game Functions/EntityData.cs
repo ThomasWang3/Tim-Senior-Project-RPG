@@ -7,7 +7,6 @@ public class EntityData : ScriptableObject
 {
     [SerializeField] public string charName;
     [SerializeField] public int maxHealth;
-    [SerializeField] public int turnCounter;
     [SerializeField] public Sprite sprite;
     [SerializeField] public float spriteScale;
     [SerializeField] public int attack;

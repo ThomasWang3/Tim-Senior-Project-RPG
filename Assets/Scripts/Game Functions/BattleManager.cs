@@ -24,7 +24,7 @@ public class BattleManager : MonoBehaviour
     [Header("Battle Turn Variables")]
     [SerializeField] private Turn battleTurn;
     [SerializeField] private Queue<Character> turnQueue = new Queue<Character>();
-    [SerializeField] private int speedCounter = 20;
+    //[SerializeField] private int speedCounter = 20;
 
 
     [Header("Other Scripts")]
