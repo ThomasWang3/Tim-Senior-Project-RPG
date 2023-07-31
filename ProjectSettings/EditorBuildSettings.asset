@@ -5,14 +5,26 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 66340595e5ecdb44cafc03aad5175392
+  - enabled: 1
+    path: Assets/Scenes/Starting Area.unity
+    guid: 2f3d01f3bd44f664d861837302342921
+  - enabled: 1
+    path: Assets/Scenes/Lvl 1.unity
+    guid: 37c5d1e26488bba498ceb630aab5d0f9
+  - enabled: 1
+    path: Assets/Scenes/Lvl 2.unity
+    guid: e0f13111576b3a240baa0b8665ce2bb1
   - enabled: 1
     path: Assets/Scenes/Final Boss Room.unity
     guid: 92be4e449f66bde4ca1d996251f38bce
   - enabled: 1
     path: Assets/Scenes/Battle Template.unity
     guid: 6bd2949cd0f4b7344bc62f39e1fdac4e
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: ca8eb631e75cc0343b73f9fc385e6cc1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1111fcde402a09941a52a5508c7053a6, type: 2}
