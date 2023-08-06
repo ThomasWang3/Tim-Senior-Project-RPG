@@ -54,7 +54,6 @@ public class Character : MonoBehaviour
     }
     private void Start()
     {
-
     }
 
     public void Attack(int damage, Character enemy)

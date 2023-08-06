@@ -24,10 +24,13 @@ public class BattleUI : MonoBehaviour
     protected Color fullHealthColor = Color.green;
     protected Color zeroHealthColor = Color.red;
 
+    // UI Image
+    [Header("UI Image")]
+    [SerializeField] protected Image image;
+
     // Entity variables
     [Header("Entity variables")]
     [SerializeField] protected Character character;
-    [SerializeField] protected Image image;
 
 
     protected void SetHealthUI()
@@ -37,6 +40,8 @@ public class BattleUI : MonoBehaviour
         image.sprite = character.getSprite();
         image.preserveAspect = true;
         image.rectTransform.localScale = new Vector3(character.getSpriteScale(), character.getSpriteScale());
+
+
         //image.sprite.bounds. *= character.getSpriteScale();
         //image.sprite.bounds.size.y *= character.getSpriteScale();
 

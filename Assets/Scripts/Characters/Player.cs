@@ -11,6 +11,11 @@ public class Player : Character
         SetupCharacter(playerData);
     }
 
+    public EntityData GetPlayerData()
+    {
+        return playerData;
+    }
+
     public void Heal(int healthRestored)
     {
         this.currHealth += healthRestored;

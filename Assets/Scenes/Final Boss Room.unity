@@ -5788,31 +5788,6 @@ Transform:
   m_Father: {fileID: 1701699298}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1902860337 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3905945361622497247, guid: 000ef27bb47998247a91e739a3797681, type: 3}
-  m_PrefabInstance: {fileID: 3905945361684427866}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1902860345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902860337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 595ab870377628c4db0e5b13f712921b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charName: 
-  maxHealth: 0
-  currHealth: 0
-  sprite: {fileID: 0}
-  spriteScale: 0
-  attack: 0
-  isDead: 0
-  playerData: {fileID: 11400000, guid: ac4cb5f228828d84985bdbab8dc24a48, type: 2}
 --- !u!61 &1902860352 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3905945361622497233, guid: 000ef27bb47998247a91e739a3797681, type: 3}
@@ -6060,8 +6035,6 @@ MonoBehaviour:
   enemyCollider: {fileID: 2045048326}
   entities:
   - {fileID: 11400000, guid: d1cd3aaba50c59d4e9459de68ab932a9, type: 2}
-  - {fileID: 11400000, guid: 221b2a4276d9d104493e2872b9995fbe, type: 2}
-  - {fileID: 11400000, guid: 221b2a4276d9d104493e2872b9995fbe, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
   backgroundSprite: {fileID: 21300000, guid: b3a59a24711b45c428ac8d71c8c9cbf3, type: 3}
@@ -6182,5 +6155,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7425178991077567252, guid: 000ef27bb47998247a91e739a3797681, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8bb82aea5ae35ba4d8a857ef57d56765, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 000ef27bb47998247a91e739a3797681, type: 3}

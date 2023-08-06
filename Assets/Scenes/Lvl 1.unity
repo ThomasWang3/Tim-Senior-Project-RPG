@@ -6291,7 +6291,6 @@ MonoBehaviour:
   entities:
   - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
   - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
-  - {fileID: 11400000, guid: 8090946ad73d2144cbd1b6cf95e2287d, type: 2}
   player: {fileID: 0}
   battleInitiated: 0
   backgroundSprite: {fileID: 21300000, guid: bebc68d3f1298244bb46cb29b2ddfb99, type: 3}

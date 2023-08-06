@@ -16,7 +16,7 @@ public class EnemyUIManager : MonoBehaviour
     //[SerializeField] private RectTransform rt;
     //[SerializeField] private float width = 600;
     [SerializeField] private float numEnemies;
-    private float offset = 200;
+    private float offset = 150;
 
     //[SerializeField] private Camera cam;
 
@@ -46,7 +46,8 @@ public class EnemyUIManager : MonoBehaviour
         //spawnPosition = GetComponent<RectTransform>().anchoredPosition;
 
         //transform.position;
-        spawnPosition.x = (4 - numEnemies) * 100;
+        spawnPosition.x = (4 - (numEnemies + 1)) * 100;
+        //spawnPosition.x += offset;
         spawnPosition.y = 0;
         foreach (EntityData ed in entityDataList.getEntities())
         {
