@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [DefaultExecutionOrder(100)]
 public class EnemyUIManager : MonoBehaviour
@@ -17,7 +18,11 @@ public class EnemyUIManager : MonoBehaviour
     //[SerializeField] private RectTransform rt;
     //[SerializeField] private float width = 600;
     [SerializeField] private int numEnemies;
-    private float offset = 150;
+
+
+
+
+    private float enemyUIOffset = 150;
 
 
     // Input
@@ -34,6 +39,9 @@ public class EnemyUIManager : MonoBehaviour
     [Header("Curr Enemy")]
     [SerializeField] private Enemy currEnemy;
     [SerializeField] private int currEnemyIndex = 0;
+    [SerializeField] private Image cursor;
+    [SerializeField] private Vector2 cursorOffset;
+    [SerializeField] private bool lockEnemyUI = false;
 
     public List<Enemy> getEnemies()
     {
@@ -47,28 +55,41 @@ public class EnemyUIManager : MonoBehaviour
         left = input.Battle.Left;
 
         left.started += leftBehavior => {
-            currEnemyIndex--;
-            if(currEnemyIndex < 0)
+            if (!lockEnemyUI)
             {
-                currEnemyIndex = enemyList.Count - 1;
+                currEnemyIndex--;
+                if (currEnemyIndex < 0)
+                {
+                    currEnemyIndex = enemyList.Count - 1;
+                }
+                //print(currEnemyIndex);
+                currEnemy = enemyList[currEnemyIndex];
+                AdjustCursor();
+                //cursor.transform.SetParent(currEnemy.transform, false);
+                //cursor.transform.position = cursor.transform.parent.position + new Vector3(0f, cursorOffset);
+
+                battleManager.UpdateEnemy(currEnemy);
             }
-            print(currEnemyIndex);
-            currEnemy = enemyList[currEnemyIndex];
-            battleManager.UpdateEnemy(currEnemy);
         };
 
 
         right = input.Battle.Right;
 
         right.started += rightBehavior => {
-            currEnemyIndex++;
-            if (currEnemyIndex >= enemyList.Count)
+            if (!lockEnemyUI)
             {
-                currEnemyIndex = 0;
+                currEnemyIndex++;
+                if (currEnemyIndex >= enemyList.Count)
+                {
+                    currEnemyIndex = 0;
+                }
+                //print(currEnemyIndex);
+                currEnemy = enemyList[currEnemyIndex];
+                AdjustCursor();
+                //cursor.transform.SetParent(currEnemy.transform, false);
+                //cursor.transform.position = cursor.transform.parent.position + new Vector3(0f, cursorOffset);
+                battleManager.UpdateEnemy(currEnemy);
             }
-            print(currEnemyIndex);
-            currEnemy = enemyList[currEnemyIndex];
-            battleManager.UpdateEnemy(currEnemy);
         };
 
 
@@ -86,7 +107,7 @@ public class EnemyUIManager : MonoBehaviour
         numEnemies = entityDataList.getEntities().Count;
 
         spawnPosition.x = (4 - (numEnemies + 1)) * 100;
-        //spawnPosition.x += offset;
+        //spawnPosition.x += enemyUIOffset;
         spawnPosition.y = 0;
         foreach (EntityData ed in entityDataList.getEntities())
         {
@@ -97,10 +118,16 @@ public class EnemyUIManager : MonoBehaviour
             enemyUI.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
 
             enemyList.Add(enemyUI.GetComponent<Enemy>());
-            spawnPosition.x += offset;
+            spawnPosition.x += enemyUIOffset;
         }
         currEnemy = enemyList[currEnemyIndex];
         battleManager.UpdateEnemy(currEnemy);
+
+        AdjustCursor();
+        //cursor.transform.SetParent(currEnemy.transform, false);
+        //cursor.transform.position = cursor.transform.parent.position + new Vector3(0f, cursorOffset);
+        //cursor.transform.localPosition = Vector3.zero;
+
     }
 
     public void RemoveEnemy()
@@ -114,12 +141,14 @@ public class EnemyUIManager : MonoBehaviour
         }
 
         //print("destroying currEnemy");
+        cursor.transform.SetParent(this.transform);
         Destroy(currEnemy.gameObject);
 
         //print("updating enemyManager's currEnemy and index");
         if(enemyList.Count > 0)
         {
             currEnemy = enemyList[currEnemyIndex];
+            AdjustCursor();
             battleManager.UpdateEnemy(currEnemy);
         }
 
@@ -127,6 +156,24 @@ public class EnemyUIManager : MonoBehaviour
     public void DeleteOverworldEnemy()
     {
         Destroy(entityDataList.gameObject);
+    }
+
+    public void AdjustCursor()
+    {
+        cursor.transform.SetParent(currEnemy.transform, true);
+        cursor.transform.position = cursor.transform.parent.position + new Vector3(cursorOffset.x, cursorOffset.y);
+        //cursor.transform.position = cursor.transform.parent.position + new Vector3(0f, cursorOffset);
+    }
+
+    public void LockBattleUI()
+    {
+        lockEnemyUI = true;
+        cursor.gameObject.SetActive(false);
+    }
+    public void UnlockBattleUI()
+    {
+        lockEnemyUI = false;
+        cursor.gameObject.SetActive(true);
     }
 
     public void OnEnable()

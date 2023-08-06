@@ -15,6 +15,6 @@ MonoBehaviour:
   charName: Ghoul
   maxHealth: 20
   sprite: {fileID: 21300000, guid: bd784ea1604e51b4aa33924d99c5fb3c, type: 3}
-  attackSprite: {fileID: 21300000, guid: ecbc4f04d2a89b643b5c4440b5bee475, type: 3}
+  attackSprite: {fileID: 21300000, guid: 5d1af74d4c6b05343aac6b69fc4b5034, type: 3}
   spriteScale: 1.1
   attack: 10

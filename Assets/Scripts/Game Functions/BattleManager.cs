@@ -69,7 +69,7 @@ public class BattleManager : MonoBehaviour
         FindObjectOfType<PlayerUI>().SwitchSprite();
         CheckEnemy();
         entityActed = true;
-        StartCoroutine(turnTime(turnSeconds));
+        StartCoroutine(turnTime());
     }
 
     public void onHealSelected()
@@ -79,7 +79,7 @@ public class BattleManager : MonoBehaviour
         //playerAct = false;
         player.Heal(player.getAttack());
         entityActed = true;
-        StartCoroutine(turnTime(turnSeconds));
+        StartCoroutine(turnTime());
     }
 
     public void onRunSelected()
@@ -93,7 +93,7 @@ public class BattleManager : MonoBehaviour
         //Time.timeScale = 1;
     }
     
-    IEnumerator turnTime(float delaySeconds)
+    IEnumerator turnTime()
     {
         //
         if (!entityActed)
@@ -107,10 +107,14 @@ public class BattleManager : MonoBehaviour
         if(turnQueue.Peek().getName() == player.getName())
         {
             // if it's the player's turn (enemy just attacked)
-            yield return new WaitForSeconds(delaySeconds);
+            yield return new WaitForSeconds(turnSeconds);
             //print("turning ON buttons");
             playerMenu.GetComponent<CanvasGroup>().interactable = true;
-            currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
+            enemyManager.UnlockBattleUI();
+            if (enemyList.Count != 0)
+            {
+                currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
+            }
         } 
         else
         {
@@ -118,12 +122,27 @@ public class BattleManager : MonoBehaviour
             //print("turning OFF buttons");
 
             playerMenu.GetComponent<CanvasGroup>().interactable = false;
-            yield return new WaitForSeconds(delaySeconds);
+            print("lock battle UI");
+            enemyManager.LockBattleUI();
+            yield return new WaitForSeconds(turnSeconds);
 
             FindObjectOfType<PlayerUI>().SwitchSprite();
             //player.gameObject.GetComponent<PlayerUI>().SwitchSprite();
             EnemyTurn();
         }
+    }
+
+    IEnumerator DefeatedEnemy()
+    {
+        yield return new WaitForSeconds(turnSeconds);
+        // unload battle scene
+        SceneManager.UnloadSceneAsync("Battle Template");
+
+        // delete the enemy from the overworld
+        enemyManager.DeleteOverworldEnemy();
+
+        // unlock player movement
+        FindObjectOfType<PlayerMovement>().UnlockMovement();
     }
 
     void PlayerTurn()
@@ -173,7 +192,7 @@ public class BattleManager : MonoBehaviour
             } 
             else
             {
-                StartCoroutine(turnTime(turnSeconds));
+                StartCoroutine(turnTime());
             }
         }
     }
@@ -194,6 +213,7 @@ public class BattleManager : MonoBehaviour
         {
             //Destroy(currEnemy.gameObject);
             //currEntity = turnQueue.Dequeue();
+            print("adjust cursor");
             enemyList.Remove(currEnemy);
             enemyManager.RemoveEnemy();
 
@@ -201,15 +221,7 @@ public class BattleManager : MonoBehaviour
             if(enemyList.Count == 0)
             {
                 // player defeated all enemies
-                // unload battle scene
-                SceneManager.UnloadSceneAsync("Battle Template");
-                
-                // delete the enemy from the overworld
-                enemyManager.DeleteOverworldEnemy();
-
-                // unlock player movement
-                FindObjectOfType<PlayerMovement>().UnlockMovement();
-
+                StartCoroutine(DefeatedEnemy());
 
             }
             //Destroy(currEnemy.gameObject);

@@ -90,7 +90,7 @@ public class BattleUI : MonoBehaviour
 
     public void SwitchSprite()
     {
-        print("switching " + name + "'s sprite");
+        //print("switching " + name + "'s sprite");
         if(image.sprite == normalImage)
         {
             //print("normal sprite --> attack sprite");

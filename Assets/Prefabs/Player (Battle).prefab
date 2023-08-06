@@ -56,6 +56,8 @@ MonoBehaviour:
   healthSlider: {fileID: 5567089536456605168}
   fillImage: {fileID: 5567089538238597319}
   image: {fileID: 8982932048433258974}
+  normalImage: {fileID: 0}
+  attackImage: {fileID: 0}
   character: {fileID: 0}
 --- !u!114 &-3605514995638566264
 MonoBehaviour:
@@ -73,6 +75,7 @@ MonoBehaviour:
   maxHealth: 0
   currHealth: 0
   sprite: {fileID: 0}
+  attackSprite: {fileID: 0}
   spriteScale: 0
   attack: 0
   isDead: 0
