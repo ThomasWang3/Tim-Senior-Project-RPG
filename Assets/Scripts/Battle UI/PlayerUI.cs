@@ -8,7 +8,6 @@ public class PlayerUI : BattleUI
     {
         character = FindObjectOfType<Player>();
         this.name = character.getName();
-        character.SetupCharacter(FindObjectOfType<Player>().GetPlayerData());
         SetHealthUI();
     }
 

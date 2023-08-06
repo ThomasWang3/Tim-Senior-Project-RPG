@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(100)]
 public class EnemyUIManager : MonoBehaviour
@@ -15,13 +16,24 @@ public class EnemyUIManager : MonoBehaviour
     [SerializeField] Vector3 spawnPosition;
     //[SerializeField] private RectTransform rt;
     //[SerializeField] private float width = 600;
-    [SerializeField] private float numEnemies;
+    [SerializeField] private int numEnemies;
     private float offset = 150;
 
+
+    // Input
+    private Input input;
+    private InputAction left;
+    private InputAction right;
+    //private float lastPressTime;
+    //[SerializeField] private float pressDelay;
     //[SerializeField] private Camera cam;
 
+    [Header("Other Scripts")]
+    [SerializeField] private BattleManager battleManager;
+
     [Header("Curr Enemy")]
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private Enemy currEnemy;
+    [SerializeField] private int currEnemyIndex = 0;
 
     public List<Enemy> getEnemies()
     {
@@ -30,7 +42,37 @@ public class EnemyUIManager : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("EnemyUI Manager Started here");
+        //Debug.Log("EnemyUI Manager Started here");
+        input = new Input();
+        left = input.Battle.Left;
+
+        left.started += leftBehavior => {
+            currEnemyIndex--;
+            if(currEnemyIndex < 0)
+            {
+                currEnemyIndex = enemyList.Count - 1;
+            }
+            print(currEnemyIndex);
+            currEnemy = enemyList[currEnemyIndex];
+            battleManager.UpdateEnemy(currEnemy);
+        };
+
+
+        right = input.Battle.Right;
+
+        right.started += rightBehavior => {
+            currEnemyIndex++;
+            if (currEnemyIndex >= enemyList.Count)
+            {
+                currEnemyIndex = 0;
+            }
+            print(currEnemyIndex);
+            currEnemy = enemyList[currEnemyIndex];
+            battleManager.UpdateEnemy(currEnemy);
+        };
+
+
+
         InitiateBattle[] enemies = FindObjectsOfType<InitiateBattle>();
         foreach(InitiateBattle enemy in enemies)
         {
@@ -42,10 +84,7 @@ public class EnemyUIManager : MonoBehaviour
         entityDataList.battleInitiated = false;
 
         numEnemies = entityDataList.getEntities().Count;
-        //Debug.Log("transform.position: " + transform.position);
-        //spawnPosition = GetComponent<RectTransform>().anchoredPosition;
 
-        //transform.position;
         spawnPosition.x = (4 - (numEnemies + 1)) * 100;
         //spawnPosition.x += offset;
         spawnPosition.y = 0;
@@ -60,29 +99,44 @@ public class EnemyUIManager : MonoBehaviour
             enemyList.Add(enemyUI.GetComponent<Enemy>());
             spawnPosition.x += offset;
         }
-        //Debug.Log(rt.rect);
-        //width = (rt.anchorMax.x - rt.anchorMin.x) * Screen.width;
+        currEnemy = enemyList[currEnemyIndex];
+        battleManager.UpdateEnemy(currEnemy);
     }
 
-    private void Start()
+    public void RemoveEnemy()
     {
+
+        //print("removing from enemyManager's enemyList");
+        enemyList.Remove(currEnemy);
+        if (currEnemyIndex >= enemyList.Count)
+        {
+            currEnemyIndex = enemyList.Count - 1;
+        }
+
+        //print("destroying currEnemy");
+        Destroy(currEnemy.gameObject);
+
+        //print("updating enemyManager's currEnemy and index");
+        if(enemyList.Count > 0)
+        {
+            currEnemy = enemyList[currEnemyIndex];
+            battleManager.UpdateEnemy(currEnemy);
+        }
+
+    }
+    public void DeleteOverworldEnemy()
+    {
+        Destroy(entityDataList.gameObject);
     }
 
-    // Update is called once per frame
-    //public void CreateEnemyUI()
-    //{
-        
-    //}
-
-    public void UpdateEnemy(Enemy e)
+    public void OnEnable()
     {
-        enemy = e;
+        left.Enable();
+        right.Enable();
     }
-
-    private void Update()
+    public void OnDisable()
     {
-        //enemyUI.GetComponent<RectTransform>().position = new Vector3(offset, 0f, 0f);
-        //enemyUI.transform.position = spawnPosition;
-        //Debug.Log("spawnPosition: " + spawnPosition);
+        left.Disable();
+        right.Disable();
     }
 }

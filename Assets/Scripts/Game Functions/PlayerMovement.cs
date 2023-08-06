@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int moveSpeed = 5;
     [SerializeField] private int tempSpeed;
     [SerializeField] private float moveMultiplier = 0.01f;
-    private Vector2 moveVector;
+    [SerializeField] private Vector2 moveVector;
     private Vector2 turnVector;
     //[SerializeField] private bool groundDetected;
     [SerializeField] private LayerMask groundLayer;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Input input;
     private InputAction movement;
     private InputAction pauseMenu;
-    //private bool lockMovement = false;
+    private bool lockMovement = false;
 
     [Header("Pause Menu")]
     [SerializeField] GameObject pauseMenuObject;
@@ -46,15 +46,17 @@ public class PlayerMovement : MonoBehaviour
         //Physics2D.SetLayerCollisionMask()
     }
 
-    //public void LockMovement()
-    //{
-    //    lockMovement = true;
-    //}
+    public void LockMovement()
+    {
+        moveVector = Vector2.zero;
+        rb.velocity = Vector2.zero;
+        lockMovement = true;
+    }
 
-    //public void UnlockMovement()
-    //{
-    //    lockMovement = false;
-    //}
+    public void UnlockMovement()
+    {
+        lockMovement = false;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -67,12 +69,17 @@ public class PlayerMovement : MonoBehaviour
             //print("Pause button pressed");
             // Enable the pauseMenu UI and freeze the game
             pauseMenuObject.SetActive(true);
-            Time.timeScale = 0;
+            LockMovement();
+            //Time.timeScale = 0;
         }
     }
 
     private void Move()
     {
+        //if (lockMovement)
+        //{
+        //    return;
+        //}
         // read input from the player as a 2D vector
         moveVector = movement.ReadValue<Vector2>();
 
@@ -107,8 +114,11 @@ public class PlayerMovement : MonoBehaviour
         }
         // Check if the player is able to move forward
         CheckGround();
-
-        //
+        
+        if (lockMovement)
+        {
+            return;
+        }
         moveVector = moveVector.normalized * moveSpeed * moveMultiplier;
         
         rb.velocity = moveVector;

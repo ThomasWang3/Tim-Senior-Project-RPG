@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+//using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(200)]
 public class BattleManager : MonoBehaviour
 {
-    enum Turn
-    {
-        Player,
-        Enemy
-    };
-
-    [Header("Entities")]
-    [SerializeField] private List<Character> entitiesList;
+    //enum Turn
+    //{
+    //    Player,
+    //    Enemy
+    //};
+    [SerializeField] private PlayerUI pui;
     [Header("Player")]
     [SerializeField] private Player player;
+    [Header("Enemies")]
+    [SerializeField] private List<Enemy> enemyList;
     [Header("Enemy")]
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private Enemy currEnemy;
 
 
     [Header("Battle Turn Variables")]
-    [SerializeField] private Turn battleTurn;
+    [SerializeField] private Character currEntity;
     [SerializeField] private Queue<Character> turnQueue = new Queue<Character>();
-    //[SerializeField] private int speedCounter = 20;
+    [SerializeField] private bool entityActed = true;
+    //[SerializeField] private bool playerAct = true;
+    [SerializeField] private float turnSeconds;
 
 
     [Header("Other Scripts")]
@@ -33,119 +36,50 @@ public class BattleManager : MonoBehaviour
     [Header("Other Gameobjects")]
     [SerializeField] private GameObject playerMenu;
     private Button[] uiButtons;
-    public uint placeHolder = 10;
-    //
-    //// Entity Elements
-    //[Header("UI Elements")]
-
-    //[SerializeField] private List<Character> entitiesList;
-    //[SerializeField] private EnemyUIManager enemyManager;
-
-    //// Enemy Entity Elements
-    //[SerializeField] private InitiateBattle enemyList;
-    //[SerializeField] private List<EntityData> enemyEntitiesList;
-    //[SerializeField] private float numEnemies;
-    ////[SerializeField] private RectTransform enemiesUI;
-    ////[SerializeField] private Vector3 enemyUISpawningPosition;
-    ////[SerializeField] private float enemyUISpawningWidth;
-
-    //// Turn Sequence
-    //[Header("Turn Sequence")]
-    //[SerializeField] private Turn battleTurn;
-    //[SerializeField] private int speedCounter = 20;
-    //// Start is called before the first frame update
+    
     void Start()
     {
 
-        ////GameObject enemyUISpawningObject = GameObject.Find("Enemies");
-        //enemyUISpawningPosition = enemiesUI.transform.position;
-        ////enemyUISpawningWidth = 
-        //Debug.Log(enemiesUI.rect.xMax);
-        //Debug.Log(enemiesUI.rect.xMin);
-        //enemyUISpawningWidth = (enemiesUI.anchorMax.x - enemiesUI.anchorMin.x) * Screen.width;
-        
-        //initialize global varialbes
-        entitiesList.AddRange(enemyManager.getEnemies());
-        player = FindObjectOfType<Player>();
-        uiButtons = playerMenu.GetComponentsInChildren<Button>();
+        FindObjectOfType<PlayerMovement>().LockMovement();
 
-        Debug.Log("BattleManager Started Here");
+        //initialize global varialbes
+        enemyList.AddRange(enemyManager.getEnemies());
+        player = FindObjectOfType<Player>();
+
+        //uiButtons = playerMenu.GetComponentsInChildren<Button>();
+
+        //Debug.Log("BattleManager Started Here");
         //populate turn queue
         turnQueue.Enqueue(player);
-        for (int i = 0; i < entitiesList.Count; i++){
-            turnQueue.Enqueue(entitiesList[i]);
-            Debug.Log("added " + entitiesList[i].getName() + " to the turn queue");
+        for (int i = 0; i < enemyList.Count; i++){
+            turnQueue.Enqueue(enemyList[i]);
+            //Debug.Log("added " + enemyList[i].getName() + " to the turn queue");
         }
         
-        manageTurn();
-        //enemyList = FindObjectOfType<InitiateBattle>();
-        //if (enemyList != null)
-        //{
-        //    enemyEntitiesList.AddRange(enemyList.getEntities());
-        //}
-
-        //foreach(EntityData ed in enemyEntitiesList)
-        //{
-        //    c.turnCounter = speedCounter;
-        //}
-    }
-
-    //TODO: add functionality for player to choose which enemy to attack. Button should probably expand to a dropdown and allow player to choose. 
-    //      for now a placeholder is to just let player attack the next enemy in the queue.
-    void manageTurn(){
-        //start turn by popping entity from queue
-        Character activeChar = turnQueue.Dequeue();
-
-        if(activeChar.IsDead())
-        {
-            activeChar = turnQueue.Dequeue();
-        }
-        //end turn by push same entity to end of queue
-        Debug.Log("Current Turn: " + activeChar.getName());
-        turnQueue.Enqueue(activeChar);
-
-        //TODO: Add a check here to see if the enemy is dead or not. If enemy is dead then remove it from the queue and choose the next character.
-
-        if(activeChar.getName() == player.getName())
-        { //player turn
-            foreach(Button button in uiButtons)
-            {
-                button.enabled = true;
-            }
-        }
-        else
-        { //enemy turn
-            //disable player UI buttons so they can't attack
-            foreach(Button button in uiButtons)
-            {
-                button.enabled = false;
-            }
-            activeChar.Attack(activeChar.getAttack(), player);
-            if(player.IsDead()){
-                //Notes: bad programming practice. Should fix maybe
-                SceneManager.UnloadSceneAsync("Battle Template");
-                Time.timeScale = 1;
-            }else{
-                manageTurn();
-            }
-        }
-
     }
 
     //Button Onclick UI. These should only be clickable during a Player's turn.
+
     public void onAttackSelected()
     {
+        PlayerTurn();
         //placeholder here.For now we will just attack the next enemy in the queue.
-        Character nextEnemy = turnQueue.Peek();
-        player.Attack(player.getAttack(), nextEnemy);
-        manageTurn();
+        //playerAct = false;
+        player.Attack(player.getAttack(), currEnemy);
+        FindObjectOfType<PlayerUI>().SwitchSprite();
+        CheckEnemy();
+        entityActed = true;
+        StartCoroutine(turnTime(turnSeconds));
     }
 
     public void onHealSelected()
     {
+        PlayerTurn();
         //heal character based on the next one and move on to the next person
+        //playerAct = false;
         player.Heal(player.getAttack());
-        manageTurn();
+        entityActed = true;
+        StartCoroutine(turnTime(turnSeconds));
     }
 
     public void onRunSelected()
@@ -155,12 +89,148 @@ public class BattleManager : MonoBehaviour
         //the above code doens't work since it removed the first scene added to scene manager first.
         //needs a way to pass in the name of the added battle scene so we can remove it. 
         SceneManager.UnloadSceneAsync("Battle Template");
-        Time.timeScale = 1;
+        FindObjectOfType<PlayerMovement>().UnlockMovement();
+        //Time.timeScale = 1;
+    }
+    
+    IEnumerator turnTime(float delaySeconds)
+    {
+        //
+        if (!entityActed)
+        {
+            yield break;
+        }
+        entityActed = false;
+        //print("Start waiting " + delaySeconds + " seconds");
+
+        // check whose turn it is
+        if(turnQueue.Peek().getName() == player.getName())
+        {
+            // if it's the player's turn (enemy just attacked)
+            yield return new WaitForSeconds(delaySeconds);
+            //print("turning ON buttons");
+            playerMenu.GetComponent<CanvasGroup>().interactable = true;
+            currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
+        } 
+        else
+        {
+            // if it's the enemy's turn (player just attacked)
+            //print("turning OFF buttons");
+
+            playerMenu.GetComponent<CanvasGroup>().interactable = false;
+            yield return new WaitForSeconds(delaySeconds);
+
+            FindObjectOfType<PlayerUI>().SwitchSprite();
+            //player.gameObject.GetComponent<PlayerUI>().SwitchSprite();
+            EnemyTurn();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void PlayerTurn()
     {
-        
+        currEntity = turnQueue.Dequeue();
+        //Debug.Log("Current Turn: " + currEntity.getName());
+        turnQueue.Enqueue(currEntity);
     }
+
+
+    void EnemyTurn()
+    {
+        entityActed = true;
+
+        if(currEntity.getName() != player.getName())
+        {
+            // switch back previous enemy's sprite to normal if the previous entity was not the player
+            currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
+        }
+
+        //start turn by popping entity from queue
+        currEntity = turnQueue.Dequeue();
+
+        //end turn by push same entity to end of queue
+        Debug.Log("Current Turn: " + currEntity.getName());
+        turnQueue.Enqueue(currEntity);
+
+
+        if (currEntity.getName() == player.getName())
+        {
+            // check just in case the currEntity is not the player
+            return;
+        } 
+        else
+        {
+            // if currEntity is not the player, perform an attack by the enemy
+            currEntity.Attack(currEntity.getAttack(), player);
+            currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
+
+            if (player.IsDead())
+            {
+                //Notes: bad programming practice. Should fix maybe
+                SceneManager.UnloadSceneAsync("Battle Template");
+
+                // unlock player movement
+                FindObjectOfType<PlayerMovement>().UnlockMovement();
+            } 
+            else
+            {
+                StartCoroutine(turnTime(turnSeconds));
+            }
+        }
+    }
+
+
+    private void PlayerDead()
+    {
+
+    }
+
+
+
+
+    private void CheckEnemy()
+    {
+        // called after every time the player attacks
+        if (currEnemy.isDead)
+        {
+            //Destroy(currEnemy.gameObject);
+            //currEntity = turnQueue.Dequeue();
+            enemyList.Remove(currEnemy);
+            enemyManager.RemoveEnemy();
+
+            // check if the enemyList is empty
+            if(enemyList.Count == 0)
+            {
+                // player defeated all enemies
+                // unload battle scene
+                SceneManager.UnloadSceneAsync("Battle Template");
+                
+                // delete the enemy from the overworld
+                enemyManager.DeleteOverworldEnemy();
+
+                // unlock player movement
+                FindObjectOfType<PlayerMovement>().UnlockMovement();
+
+
+            }
+            //Destroy(currEnemy.gameObject);
+            turnQueue.Clear();
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                turnQueue.Enqueue(enemyList[i]);
+                //Debug.Log("added " + enemyList[i].getName() + " to the turn queue");
+            }
+            turnQueue.Enqueue(player);
+
+        }
+    }
+
+    
+
+    public void UpdateEnemy(Enemy e)
+    {
+        //print("updating battleManager's currEnemy");
+        currEnemy = e;
+        //e.SwitchSprite();
+    }
+
 }

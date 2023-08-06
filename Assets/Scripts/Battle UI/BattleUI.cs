@@ -27,19 +27,33 @@ public class BattleUI : MonoBehaviour
     // UI Image
     [Header("UI Image")]
     [SerializeField] protected Image image;
+    [SerializeField] protected Sprite normalImage;
+    [SerializeField] protected Sprite attackImage;
+
 
     // Entity variables
     [Header("Entity variables")]
     [SerializeField] protected Character character;
 
+    
 
     protected void SetHealthUI()
     {
 
 
-        image.sprite = character.getSprite();
+        normalImage = character.getSprite();
+        attackImage = character.getAttackSprite();
+
+        image.sprite = normalImage;
+        //image.scaleMode = ScaleMode.ScaleAndCrop;
         image.preserveAspect = true;
+
+
+        //image.minHeight = character.minHeight;
+        //image.minWidth= character.minWidth;
+        //= true;
         image.rectTransform.localScale = new Vector3(character.getSpriteScale(), character.getSpriteScale());
+
 
 
         //image.sprite.bounds. *= character.getSpriteScale();
@@ -63,20 +77,31 @@ public class BattleUI : MonoBehaviour
         if (scale <= 0.3f)
         {
             fillImage.color = Color.red;
-        } else if (scale <= 0.7f)
-        {
+        } 
+        else if (scale <= 0.7f)
+        { 
             fillImage.color = Color.yellow;
-        } else
+        } 
+        else
         {
             fillImage.color = Color.green;
         }
-        if (character.getCurrHealth() == 0)
-        {
-            fillImage.gameObject.SetActive(false);
-        }
     }
 
-
+    public void SwitchSprite()
+    {
+        print("switching " + name + "'s sprite");
+        if(image.sprite == normalImage)
+        {
+            //print("normal sprite --> attack sprite");
+            image.sprite = attackImage;
+        } 
+        else
+        {
+            //print("attack sprite --> normal sprite");
+            image.sprite = normalImage;
+        }
+    }
 
     private void Update()
     {

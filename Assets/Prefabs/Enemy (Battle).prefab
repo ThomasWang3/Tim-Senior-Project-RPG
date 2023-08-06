@@ -56,6 +56,8 @@ MonoBehaviour:
   healthSlider: {fileID: 270808167334348909}
   fillImage: {fileID: 270808165903662426}
   image: {fileID: 3614585091296138307}
+  normalImage: {fileID: 0}
+  attackImage: {fileID: 0}
   character: {fileID: 8611067009332617737}
 --- !u!114 &8611067009332617737
 MonoBehaviour:
@@ -73,6 +75,7 @@ MonoBehaviour:
   maxHealth: 0
   currHealth: 0
   sprite: {fileID: 0}
+  attackSprite: {fileID: 0}
   spriteScale: 0
   attack: 0
   isDead: 0
@@ -195,6 +198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleUI
       objectReference: {fileID: 0}
+    - target: {fileID: 350842207148129552, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 270808167262354705}
     - target: {fileID: 975245092141912962, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -221,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756253171067321430, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 150
+      value: 222.97
       objectReference: {fileID: 0}
     - target: {fileID: 1756253171067321430, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -241,11 +248,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756253171067321430, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0014954
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1756253171067321430, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834250253039247678, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834250253039247678, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834250253039247678, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7096674168273259143, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -290,6 +309,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &270808167262354705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 350842207034951788, guid: 1e0bdad20c4383d4b9bd851f4dda699e, type: 3}
+  m_PrefabInstance: {fileID: 512402891361367421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &270808167334348909 stripped

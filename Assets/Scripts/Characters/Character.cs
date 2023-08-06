@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     //[SerializeField] public int turnCounter;
     //[SerializeField] public uint speed;
     [SerializeField] public Sprite sprite;
+    [SerializeField] public Sprite attackSprite;
     [SerializeField] public float spriteScale;
     [SerializeField] public int attack;
     [SerializeField] public bool isDead = false;
@@ -32,6 +33,10 @@ public class Character : MonoBehaviour
     {
         return sprite;
     }
+    public Sprite getAttackSprite()
+    {
+        return attackSprite;
+    }
     public float getSpriteScale()
     {
         return spriteScale;
@@ -49,6 +54,7 @@ public class Character : MonoBehaviour
         maxHealth = ed.maxHealth;
         currHealth = maxHealth;
         sprite = ed.sprite;
+        attackSprite = ed.attackSprite;
         spriteScale = ed.spriteScale;
         attack = ed.attack;
     }
@@ -58,16 +64,17 @@ public class Character : MonoBehaviour
 
     public void Attack(int damage, Character enemy)
     {
+        //Debug.Log(name + " attacks " + enemy.getName() + " for " + damage + " damage.");
         enemy.TakeDamage(damage);
     }
 
     public void TakeDamage(int damageTaken)
     {
         currHealth -= damageTaken;
-        Debug.Log("CURRENT HEALTH IS: " + this.currHealth);
+        //Debug.Log(name + " HEALTH IS: " + this.currHealth);
         if(currHealth <= 0)
         {
-            Debug.Log(this.getName() + " has died");
+            //Debug.Log(this.getName() + " has died");
             currHealth = 0;
             Die();
         }
@@ -75,7 +82,9 @@ public class Character : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log(charName + " defeated.");
+        Debug.Log(charName + " died.");
         isDead = true;
+        //Destroy(this.gameObject);
+        //this.gameObject.SetActive(false);
     }
 }

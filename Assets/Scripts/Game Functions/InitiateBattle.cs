@@ -33,7 +33,7 @@ public class InitiateBattle : MonoBehaviour
     {
         Debug.Log("Load battle scene with " + gameObject.name + " vs. " + collision.gameObject.name);
         //player.LockMovement();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         battleInitiated = true;
         SceneManager.LoadSceneAsync("Battle Template", LoadSceneMode.Additive);
     }

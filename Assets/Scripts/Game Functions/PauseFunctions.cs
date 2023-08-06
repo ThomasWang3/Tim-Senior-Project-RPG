@@ -10,7 +10,8 @@ public class PauseFunctions : MonoBehaviour
     public void Close()
     {
         //print("Pause Menu closed");
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
+        FindObjectOfType<PlayerMovement>().UnlockMovement();
         this.gameObject.SetActive(false);
     }
 

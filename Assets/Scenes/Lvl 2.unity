@@ -22721,31 +22721,6 @@ Transform:
   m_Father: {fileID: 131179328}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1902860337 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3905945361622497247, guid: 000ef27bb47998247a91e739a3797681, type: 3}
-  m_PrefabInstance: {fileID: 3905945361684427866}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1902860345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902860337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 595ab870377628c4db0e5b13f712921b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charName: 
-  maxHealth: 0
-  currHealth: 0
-  sprite: {fileID: 0}
-  spriteScale: 0
-  attack: 0
-  isDead: 0
-  playerData: {fileID: 11400000, guid: ac4cb5f228828d84985bdbab8dc24a48, type: 2}
 --- !u!61 &1902860352 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3905945361622497233, guid: 000ef27bb47998247a91e739a3797681, type: 3}
@@ -23742,11 +23717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3905945361622497238, guid: 000ef27bb47998247a91e739a3797681, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.97
+      value: -10.76
       objectReference: {fileID: 0}
     - target: {fileID: 3905945361622497238, guid: 000ef27bb47998247a91e739a3797681, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.84
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: 3905945361622497238, guid: 000ef27bb47998247a91e739a3797681, type: 3}
       propertyPath: m_LocalPosition.z

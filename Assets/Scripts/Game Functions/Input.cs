@@ -125,6 +125,54 @@ public partial class @Input : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Battle"",
+            ""id"": ""f917b1a6-9825-4783-9ad6-e33033b5b80f"",
+            ""actions"": [
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""c04542b7-b879-464e-ae90-169c1fef0aa0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a983d36-f628-4475-b611-1490fb70e10b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""522a7940-cabb-448d-a04d-d5abbb8c6bf5"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5065cb12-4b01-4b49-aff5-d4d3d27c6217"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -139,6 +187,10 @@ public partial class @Input : IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_PauseMenu = m_Movement.FindAction("Pause Menu", throwIfNotFound: true);
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        m_Battle_Left = m_Battle.FindAction("Left", throwIfNotFound: true);
+        m_Battle_Right = m_Battle.FindAction("Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -235,6 +287,47 @@ public partial class @Input : IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private IBattleActions m_BattleActionsCallbackInterface;
+    private readonly InputAction m_Battle_Left;
+    private readonly InputAction m_Battle_Right;
+    public struct BattleActions
+    {
+        private @Input m_Wrapper;
+        public BattleActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Left => m_Wrapper.m_Battle_Left;
+        public InputAction @Right => m_Wrapper.m_Battle_Right;
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        public void SetCallbacks(IBattleActions instance)
+        {
+            if (m_Wrapper.m_BattleActionsCallbackInterface != null)
+            {
+                @Left.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnRight;
+            }
+            m_Wrapper.m_BattleActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
+            }
+        }
+    }
+    public BattleActions @Battle => new BattleActions(this);
     private int m_ControlsSchemeIndex = -1;
     public InputControlScheme ControlsScheme
     {
@@ -248,5 +341,10 @@ public partial class @Input : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
+    }
+    public interface IBattleActions
+    {
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
 }

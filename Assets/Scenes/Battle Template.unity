@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 76577142}
   - component: {fileID: 76577141}
+  - component: {fileID: 76577143}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -152,13 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ed43bc56599c24ebff8527e6aaf633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entitiesList: []
+  pui: {fileID: 0}
   player: {fileID: 0}
-  enemy: {fileID: 0}
-  battleTurn: 0
+  enemyList: []
+  currEnemy: {fileID: 0}
+  currEntity: {fileID: 0}
+  entityActed: 1
+  turnSeconds: 1
   enemyManager: {fileID: 319102558}
-  playerMenu: {fileID: 2088421183}
-  placeHolder: 10
+  playerMenu: {fileID: 609250817}
 --- !u!4 &76577142
 Transform:
   m_ObjectHideFlags: 0
@@ -174,6 +177,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76577143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76577140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 11d4d12e6cf83274fa87f78283310bf7, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Controls
+  m_DefaultActionMap: Battle
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &319102556
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +262,9 @@ MonoBehaviour:
   enemyUI: {fileID: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
   numEnemies: 0
-  enemy: {fileID: 0}
+  battleManager: {fileID: 76577141}
+  currEnemy: {fileID: 0}
+  currEnemyIndex: 0
 --- !u!1 &609250817
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1456606606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1614746284
 AudioListener:
   m_ObjectHideFlags: 0
