@@ -16,7 +16,10 @@ public class InitiateBattle : MonoBehaviour
 
     [Header("Battle Background Image")]
     [SerializeField] public Sprite backgroundSprite;
-    
+
+    [Header("Music")]
+    [SerializeField] private AudioSource battleMusic;
+
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
@@ -36,5 +39,26 @@ public class InitiateBattle : MonoBehaviour
         //Time.timeScale = 0;
         battleInitiated = true;
         SceneManager.LoadSceneAsync("Battle Template", LoadSceneMode.Additive);
+        // if there is a battleMusic and it's not active, activate it and play it
+        //if (battleMusic && !battleMusic.isActiveAndEnabled)
+        //{
+        //    battleMusic.enabled = true;
+        //}
+        StartMusic();
+    }
+
+    public void StartMusic()
+    {
+        if (battleMusic && !battleMusic.isActiveAndEnabled)
+        {
+            battleMusic.enabled = true;
+        }
+    }
+    public void StopMusic()
+    {
+        if (battleMusic && battleMusic.isActiveAndEnabled)
+        {
+            battleMusic.enabled = false;
+        }
     }
 }

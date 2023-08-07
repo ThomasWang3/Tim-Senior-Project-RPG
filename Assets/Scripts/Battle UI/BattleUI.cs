@@ -53,7 +53,9 @@ public class BattleUI : MonoBehaviour
         //image.minWidth= character.minWidth;
         //= true;
         image.rectTransform.localScale = new Vector3(character.getSpriteScale(), character.getSpriteScale());
-
+        if(character.getName() == "Dragon King"){
+            image.rectTransform.position -= new Vector3(50f, 75f);
+        }
 
 
         //image.sprite.bounds. *= character.getSpriteScale();

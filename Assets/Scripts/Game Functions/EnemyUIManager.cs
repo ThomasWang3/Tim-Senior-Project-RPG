@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(100)]
 public class EnemyUIManager : MonoBehaviour
@@ -156,6 +157,26 @@ public class EnemyUIManager : MonoBehaviour
     public void DeleteOverworldEnemy()
     {
         Destroy(entityDataList.gameObject);
+
+        //SceneManager.UnloadSceneAsync("Battle Template");
+        //FindObjectOfType<PlayerMovement>().UnlockMovement();
+        //entityDataList.StopMusic();
+    }
+
+    public void UnloadBattleScene()
+    {
+        if(enemyList.Count == 0)
+        {
+            DeleteOverworldEnemy();
+        }
+        entityDataList.StopMusic();
+        SceneManager.UnloadSceneAsync("Battle Template");
+        FindObjectOfType<PlayerMovement>().UnlockMovement();
+    }
+
+    public void PlayerDead()
+    {
+        SceneManager.LoadScene("Game Over");
     }
 
     public void AdjustCursor()

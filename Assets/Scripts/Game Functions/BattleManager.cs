@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-//using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(200)]
 public class BattleManager : MonoBehaviour
@@ -84,12 +82,13 @@ public class BattleManager : MonoBehaviour
 
     public void onRunSelected()
     {
-        Debug.Log("Current Scene: " + SceneManager.GetActiveScene().name);
+        //Debug.Log("Current Scene: " + SceneManager.GetActiveScene().name);
         //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
         //the above code doens't work since it removed the first scene added to scene manager first.
         //needs a way to pass in the name of the added battle scene so we can remove it. 
-        SceneManager.UnloadSceneAsync("Battle Template");
-        FindObjectOfType<PlayerMovement>().UnlockMovement();
+        //SceneManager.UnloadSceneAsync("Battle Template");
+        //FindObjectOfType<PlayerMovement>().UnlockMovement();
+        enemyManager.UnloadBattleScene();
         //Time.timeScale = 1;
     }
     
@@ -136,13 +135,13 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(turnSeconds);
         // unload battle scene
-        SceneManager.UnloadSceneAsync("Battle Template");
+        enemyManager.UnloadBattleScene();
 
         // delete the enemy from the overworld
-        enemyManager.DeleteOverworldEnemy();
+        //enemyManager.DeleteOverworldEnemy();
 
         // unlock player movement
-        FindObjectOfType<PlayerMovement>().UnlockMovement();
+        //FindObjectOfType<PlayerMovement>().UnlockMovement();
     }
 
     void PlayerTurn()
@@ -185,10 +184,11 @@ public class BattleManager : MonoBehaviour
             if (player.IsDead())
             {
                 //Notes: bad programming practice. Should fix maybe
-                SceneManager.UnloadSceneAsync("Battle Template");
-
+                //SceneManager.UnloadSceneAsync("Battle Template");
+                enemyManager.PlayerDead();
+                    //UnloadBattleScene();
                 // unlock player movement
-                FindObjectOfType<PlayerMovement>().UnlockMovement();
+                //FindObjectOfType<PlayerMovement>().UnlockMovement();
             } 
             else
             {
@@ -198,10 +198,7 @@ public class BattleManager : MonoBehaviour
     }
 
 
-    private void PlayerDead()
-    {
 
-    }
 
 
 
