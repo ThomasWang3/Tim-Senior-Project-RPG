@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         // every frame, call Move() to get player input and move the player
         Move();
         // if the player presses the pauseMenu button
-        if (pauseMenu.IsPressed())
+        if (pauseMenu.IsPressed() && !lockMovement)
         {
             //print("Pause button pressed");
             // Enable the pauseMenu UI and freeze the game
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
             new Vector3(0f, 0f, 1.0f)),
             Mathf.Infinity,
             groundLayer
-            ); ;
+            );
         //Debug.Log(hit.collider);
         if (!hit)
         {
