@@ -36,7 +36,7 @@ public class BattleUI : MonoBehaviour
 
     private void Start()
     {
-        image.rectTransform.localPosition += new Vector3(character.getSpawnOffset().x, character.getSpawnOffset().y);
+        
         SetHealthUI();
     }
 
@@ -94,6 +94,12 @@ public class BattleUI : MonoBehaviour
         {
             fillImage.color = Color.green;
         }
+    }
+
+
+    public void AdjustPosition()
+    {
+        image.rectTransform.localPosition += new Vector3(character.getSpawnOffset().x, character.getSpawnOffset().y);
     }
 
     public void SwitchSprite()

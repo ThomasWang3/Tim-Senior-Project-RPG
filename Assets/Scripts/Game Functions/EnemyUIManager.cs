@@ -109,7 +109,7 @@ public class EnemyUIManager : MonoBehaviour
 
         spawnPosition.x = (4 - (numEnemies + 1)) * 100;
         //spawnPosition.x += enemyUIOffset;
-        spawnPosition.y = 0;
+        //spawnPosition.y = 0;
         foreach (EntityData ed in entityDataList.getEntities())
         {
             //GameObject 
@@ -117,8 +117,11 @@ public class EnemyUIManager : MonoBehaviour
             enemyUI.GetComponent<Enemy>().SetupCharacter(ed);
 
             enemyUI.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
-
+            enemyUI.GetComponent<EnemyUI>().AdjustPosition();
             enemyList.Add(enemyUI.GetComponent<Enemy>());
+
+
+
             //enemyUI.GetComponent<Enemy>().getSprite().rec
             //    += 
             //    new Vector3(enemyUI.GetComponent<Enemy>().getSpawnOffset().x, 

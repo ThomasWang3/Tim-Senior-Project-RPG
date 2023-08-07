@@ -8,7 +8,9 @@ public class PlayerUI : BattleUI
     {
         character = FindObjectOfType<Player>();
         this.name = character.getName();
+
         SetHealthUI();
+        AdjustPosition();
     }
 
 }
