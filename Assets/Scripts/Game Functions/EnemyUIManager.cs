@@ -119,6 +119,10 @@ public class EnemyUIManager : MonoBehaviour
             enemyUI.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
 
             enemyList.Add(enemyUI.GetComponent<Enemy>());
+            //enemyUI.GetComponent<Enemy>().getSprite().rec
+            //    += 
+            //    new Vector3(enemyUI.GetComponent<Enemy>().getSpawnOffset().x, 
+            //                enemyUI.GetComponent<Enemy>().getSpawnOffset().y);
             spawnPosition.x += enemyUIOffset;
         }
         currEnemy = enemyList[currEnemyIndex];
@@ -181,8 +185,11 @@ public class EnemyUIManager : MonoBehaviour
 
     public void AdjustCursor()
     {
+        //cursor.transform.SetParent()
         cursor.transform.SetParent(currEnemy.transform, true);
-        cursor.transform.position = cursor.transform.parent.position + new Vector3(cursorOffset.x, cursorOffset.y);
+        cursor.rectTransform.anchoredPosition = new Vector2(0.5f, 0.0f);
+        cursor.rectTransform.localPosition += new Vector3(cursorOffset.x, cursorOffset.y);
+        //cursor.transform.position = cursor.transform.parent.position + new Vector3(cursorOffset.x, cursorOffset.y);
         //cursor.transform.position = cursor.transform.parent.position + new Vector3(0f, cursorOffset);
     }
 

@@ -6,16 +6,17 @@ public class Character : MonoBehaviour
 {
     //[SerializeField] EntityData entityData;
 
-    [SerializeField] public string charName;
-    [SerializeField] public int maxHealth;
-    [SerializeField] public int currHealth;
-    //[SerializeField] public int turnCounter;
-    //[SerializeField] public uint speed;
-    [SerializeField] public Sprite sprite;
-    [SerializeField] public Sprite attackSprite;
-    [SerializeField] public float spriteScale;
-    [SerializeField] public int attack;
-    [SerializeField] public bool isDead = false;
+    [SerializeField] protected string charName;
+    [SerializeField] protected int maxHealth;
+    [SerializeField] protected int currHealth;
+    //[SerializeFieldprotected public int turnCounter;
+    //[SerializeFieldprotected public uint speed;
+    [SerializeField] protected Sprite sprite;
+    [SerializeField] protected Sprite attackSprite;
+    [SerializeField] protected float spriteScale;
+    [SerializeField] protected int attack;
+    [SerializeField] protected Vector2 spawnOffset;
+    [SerializeField] protected bool isDead = false;
 
     public int getMaxHealth()
     {
@@ -44,7 +45,12 @@ public class Character : MonoBehaviour
     public int getAttack(){
         return attack;
     }
-    public bool IsDead(){
+    public Vector2 getSpawnOffset()
+    {
+        return spawnOffset;
+    }
+
+    public bool getIsDead(){
         return isDead;
     }
 
@@ -57,10 +63,11 @@ public class Character : MonoBehaviour
         attackSprite = ed.attackSprite;
         spriteScale = ed.spriteScale;
         attack = ed.attack;
+        spawnOffset = ed.spawnOffset;
     }
-    private void Start()
-    {
-    }
+    //private void Start()
+    //{
+    //}
 
     public void Attack(int damage, Character enemy)
     {

@@ -181,7 +181,7 @@ public class BattleManager : MonoBehaviour
             currEntity.Attack(currEntity.getAttack(), player);
             currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
 
-            if (player.IsDead())
+            if (player.getIsDead())
             {
                 //Notes: bad programming practice. Should fix maybe
                 //SceneManager.UnloadSceneAsync("Battle Template");
@@ -206,7 +206,7 @@ public class BattleManager : MonoBehaviour
     private void CheckEnemy()
     {
         // called after every time the player attacks
-        if (currEnemy.isDead)
+        if (currEnemy.getIsDead())
         {
             //Destroy(currEnemy.gameObject);
             //currEntity = turnQueue.Dequeue();

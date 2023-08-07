@@ -18,3 +18,4 @@ MonoBehaviour:
   attackSprite: {fileID: 21300000, guid: 21aeda962b8b22d4d8eb1c3ab75f0cee, type: 3}
   spriteScale: 1
   attack: 3
+  spawnOffset: {x: 0, y: -15}

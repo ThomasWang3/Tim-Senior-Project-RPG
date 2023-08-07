@@ -6,7 +6,6 @@ using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
-
     // Text variables
     [Header("Text variables")]
     [SerializeField] protected TextMeshProUGUI charName;
@@ -29,17 +28,21 @@ public class BattleUI : MonoBehaviour
     [SerializeField] protected Image image;
     [SerializeField] protected Sprite normalImage;
     [SerializeField] protected Sprite attackImage;
-
+    //protected Vector3 spawnPosition;
 
     // Entity variables
     [Header("Entity variables")]
     [SerializeField] protected Character character;
 
-    
+    private void Start()
+    {
+        image.rectTransform.localPosition += new Vector3(character.getSpawnOffset().x, character.getSpawnOffset().y);
+        SetHealthUI();
+    }
 
     protected void SetHealthUI()
     {
-
+        //print("SetHealthUI called");
 
         normalImage = character.getSprite();
         attackImage = character.getAttackSprite();
@@ -47,15 +50,18 @@ public class BattleUI : MonoBehaviour
         image.sprite = normalImage;
         //image.scaleMode = ScaleMode.ScaleAndCrop;
         image.preserveAspect = true;
+        image.rectTransform.localScale = new Vector3(character.getSpriteScale(), character.getSpriteScale());
 
 
         //image.minHeight = character.minHeight;
         //image.minWidth= character.minWidth;
         //= true;
-        image.rectTransform.localScale = new Vector3(character.getSpriteScale(), character.getSpriteScale());
-        if(character.getName() == "Dragon King"){
-            image.rectTransform.position -= new Vector3(50f, 75f);
-        }
+
+        //if(character.getName().Equals("Dragon King")){
+        //    print("It's the Dragon King");
+        //    image.rectTransform.position = Vector3.zero;
+        //    image.rectTransform.position = dragonOffset;
+        //}
 
 
         //image.sprite.bounds. *= character.getSpriteScale();

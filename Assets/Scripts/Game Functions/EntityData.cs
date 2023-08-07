@@ -11,4 +11,5 @@ public class EntityData : ScriptableObject
     [SerializeField] public Sprite attackSprite;
     [SerializeField] public float spriteScale;
     [SerializeField] public int attack;
+    [SerializeField] public Vector2 spawnOffset;
 }
