@@ -14,7 +14,7 @@ public class BackgroundChanging : MonoBehaviour
     void Awake()
     {
 
-        Debug.Log("BackgroundChangingStarted here");
+        //Debug.Log("BackgroundChangingStarted here");
         InitiateBattle[] enemies = FindObjectsOfType<InitiateBattle>();
         foreach (InitiateBattle enemy in enemies)
         {

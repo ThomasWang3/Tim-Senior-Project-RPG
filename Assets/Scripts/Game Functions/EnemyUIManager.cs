@@ -153,7 +153,7 @@ public class EnemyUIManager : MonoBehaviour
         Destroy(currEnemy.gameObject);
 
         //print("updating enemyManager's currEnemy and index");
-        if(enemyList.Count > 0)
+        if (enemyList.Count > 0)
         {
             currEnemy = enemyList[currEnemyIndex];
             AdjustCursor();
@@ -161,22 +161,25 @@ public class EnemyUIManager : MonoBehaviour
         }
 
     }
-    public void DeleteOverworldEnemy()
-    {
-        Destroy(entityDataList.gameObject);
+    //public void DeleteOverworldEnemy()
+    //{
+        //print("Delete Overworld Enemy");
+        //Destroy(entityDataList.gameObject);
 
         //SceneManager.UnloadSceneAsync("Battle Template");
         //FindObjectOfType<PlayerMovement>().UnlockMovement();
         //entityDataList.StopMusic();
-    }
+    //}
 
     public void UnloadBattleScene()
     {
-        if(enemyList.Count == 0)
+        if (enemyList.Count == 0)
         {
-            DeleteOverworldEnemy();
+            //DeleteOverworldEnemy();
+            entityDataList.enemyDefeated = true;
         }
         entityDataList.StopMusic();
+        //print("Unload Battle Scene");
         SceneManager.UnloadSceneAsync("Battle Template");
         FindObjectOfType<PlayerMovement>().UnlockMovement();
     }

@@ -16,9 +16,9 @@ public class Player : Character
         return playerData;
     }
 
-    public void Heal(int healthRestored)
+    public void Heal()
     {
-        this.currHealth += healthRestored;
+        this.currHealth += 20;
         //prevent overhealing
         if(this.currHealth > maxHealth)
         {

@@ -21,7 +21,8 @@ public class GameOver : MonoBehaviour
 
     IEnumerator DelayMenuLoad()
     {
-        for (float i = 0; i < 1; i += (Time.deltaTime / 2)){
+        for (float i = 0; i < 1; i += (Time.deltaTime / 2))
+        {
             image.canvasRenderer.SetAlpha(i);
             yield return null;
         }

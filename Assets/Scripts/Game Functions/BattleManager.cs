@@ -75,7 +75,7 @@ public class BattleManager : MonoBehaviour
         PlayerTurn();
         //heal character based on the next one and move on to the next person
         //playerAct = false;
-        player.Heal(player.getAttack());
+        player.Heal();
         entityActed = true;
         StartCoroutine(turnTime());
     }
@@ -121,7 +121,7 @@ public class BattleManager : MonoBehaviour
             //print("turning OFF buttons");
 
             playerMenu.GetComponent<CanvasGroup>().interactable = false;
-            print("lock battle UI");
+            //print("lock battle UI");
             enemyManager.LockBattleUI();
             yield return new WaitForSeconds(turnSeconds);
 
@@ -133,6 +133,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator DefeatedEnemy()
     {
+        playerMenu.GetComponent<CanvasGroup>().interactable = false;
         yield return new WaitForSeconds(turnSeconds);
         // unload battle scene
         enemyManager.UnloadBattleScene();
@@ -210,7 +211,7 @@ public class BattleManager : MonoBehaviour
         {
             //Destroy(currEnemy.gameObject);
             //currEntity = turnQueue.Dequeue();
-            print("adjust cursor");
+            //print("adjust cursor");
             enemyList.Remove(currEnemy);
             enemyManager.RemoveEnemy();
 
