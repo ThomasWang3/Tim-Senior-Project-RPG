@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ea2b3996ed50c449182454a2ec9900, type: 3}
   m_Name: Art Center
   m_EditorClassIdentifier: 
-  charName: Art Center
-  maxHealth: 10000
+  charName: ArtCenter
+  maxHealth: 24000
   sprite: {fileID: 21300000, guid: 50b91349f282f1841ae4313880094c68, type: 3}
   attackSprite: {fileID: 21300000, guid: 50b91349f282f1841ae4313880094c68, type: 3}
   spriteScale: 1.4
-  attack: 40
+  attack: 19
   spawnOffset: {x: 0, y: -50}
