@@ -89,7 +89,7 @@ public class Character : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log(charName + " died.");
+        //Debug.Log(charName + " died.");
         isDead = true;
         //Destroy(this.gameObject);
         //this.gameObject.SetActive(false);

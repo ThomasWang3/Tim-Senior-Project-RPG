@@ -125,7 +125,7 @@ public class BattleManager : MonoBehaviour
             enemyManager.LockBattleUI();
             yield return new WaitForSeconds(turnSeconds);
 
-            FindObjectOfType<PlayerUI>().SwitchSprite();
+            //FindObjectOfType<PlayerUI>().SwitchSprite();
             //player.gameObject.GetComponent<PlayerUI>().SwitchSprite();
             EnemyTurn();
         }
@@ -157,16 +157,19 @@ public class BattleManager : MonoBehaviour
     {
         entityActed = true;
 
+
         if(currEntity.getName() != player.getName())
         {
             // switch back previous enemy's sprite to normal if the previous entity was not the player
             currEntity.gameObject.GetComponent<EnemyUI>().SwitchSprite();
         }
 
-        //start turn by popping entity from queue
+        // change currEntity to next entity in queue
+        
+        // start turn by popping entity from queue
         currEntity = turnQueue.Dequeue();
 
-        //end turn by push same entity to end of queue
+        // end turn by push same entity to end of queue
         Debug.Log("Current Turn: " + currEntity.getName());
         turnQueue.Enqueue(currEntity);
 
